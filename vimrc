@@ -6,6 +6,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'vim-scripts/PDV--phpDocumentor-for-Vim'
+Plugin 'mattn/emmet-vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -59,3 +60,16 @@ endfunction
 " php 补全代码
 " set omnifunc=phpcomplete#CompletePHP
 " autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
+" emmet 
+" 只在插入模式使用
+" let g:user_emmet_mode='i'    "only enable insert mode functions.
+" let g:user_emmet_mode='n'    "only enable normal mode functions.
+" let g:user_emmet_mode='inv'  "enable all functions, which is equal to
+" let g:user_emmet_mode='a'    "enable all function in all mode.
+
+" html css文件生效
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+" emmet 默认热键<C-Y>
+let g:user_emmet_leader_key="<c-e>"
