@@ -2,7 +2,10 @@
 
 #这是一个用来使dotfiles 生效的脚本.
 #
-# 1 检查是否在dotfiles下
-# 2 替换文件
+# 1 替换文件
 
-echo 233
+HOME=${HOME}
+PWD=`pwd`
+#https://github.com/tankywoo/dotfiles/blob/master/setup.sh
+#1
+
