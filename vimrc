@@ -12,13 +12,19 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 let mapleader = " "
-map <leader>b <Esc>:TagbarToggle <CR> 
-map <leader>t <Esc>:NERDTreeToggle <CR>
+map <leader>b :TagbarToggle<CR> 
+map <leader>t :NERDTreeToggle<CR>
 map <leader>a $^i//<Esc> 
-map <leader>l <C-w>l "分屏向右 
-map <leader>h <C-w>h "分屏向左 
-map <leader>w <C-w>w "分屏向左 
-map <leader>p :call PhpDocSingle() <CR>
+"分屏向右 
+map <leader>l <C-w>l
+"分屏向左 
+map <leader>h <C-w>h
+" 保存 
+map <leader>w <Esc>:w<CR>
+" 退出
+map <leader>q <Esc>:q<CR> 
+"php添加注释
+map <leader>p :call PhpDocSingle()<CR> 
 
 " filetype plugin on
 " autocmd FileType php set omnifunc=phpcomplete#CompletePHP
