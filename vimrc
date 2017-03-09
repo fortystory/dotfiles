@@ -9,6 +9,9 @@ Plugin 'Lokaltog/vim-powerline'
 Plugin 'vim-scripts/PDV--phpDocumentor-for-Vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'ervandew/supertab'
+Plugin 'fugalh/desert.vim'
+Plugin 'vim-airline/vim-airline'
+" Plugin 'fholgado/minibufexpl.vim'  " 不如airline 好看
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -32,6 +35,10 @@ map <leader>n /todo<CR>:nohl<CR>
 " filetype plugin on
 " autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
+"设置切换Buffer快捷键"
+nnoremap <C-N> :bn<CR>
+nnoremap <C-P> :bp<CR>
+
 set nu
 " set background=dark
 
@@ -42,17 +49,18 @@ set sm
 set fillchars=vert:\ ,stl:\ ,stlnc:\
 set novisualbell
 syntax on
-" colorscheme darkblue 
 set hls   "搜索时高亮显示被找到的文本
 set is    "搜索时在未完全输入完毕要检索的文本时就开始检索
 set ambiwidth=double  "防止特殊符号无法正常显示
-let g:rehash256 = 1
-" set t_Co=256 "支持256颜色
+" let g:rehash256 = 1
+set t_Co=256 "支持256颜色
+" colorscheme darkblue 
+" set termguicolors " 真彩色
 
 "au WinLeave * set nocursorline nocursorcolumn
 "au WinEnter * set cursorline cursorcolumn
 set cursorline 
-" set cursorcolumn
+set cursorcolumn
 " highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=none guifg=none
 " highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=none guifg=none
 " hi CursorLine   cterm=NONE ctermbg=grey ctermfg=white
@@ -98,8 +106,26 @@ autocmd FileType html,css EmmetInstall
 " emmet 默认热键<C-Y>
 let g:user_emmet_leader_key="<c-e>"
 
+
+colorscheme molokai 
 let g:molokai_original = 1 
+" colorscheme desert
 
 
 " autocmd VimEnter * NERDTree "在 vim 启动的时候默认开启 NERDTree（autocmd 可以缩写为 au）
 let NERDTreeShowBookmarks=1 "当打开NERDTree窗口时，自动显示Bookmarks  
+
+" airline setting
+" let g:airline_theme="luna" 
+
+"这个是安装字体后 必须设置此项" 
+"let g:airline_powerline_fonts = 1   
+
+"打开tabline功能,方便查看Buffer和切换，这个功能比较不错"
+"我还省去了minibufexpl插件，因为我习惯在1个Tab下用多个buffer"
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+" 关闭状态显示空白符号计数,这个对我用处不大"
+"let g:airline#extensions#whitespace#enabled = 0
+"let g:airline#extensions#whitespace#symbol = '!'
