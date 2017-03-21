@@ -11,6 +11,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'ervandew/supertab'
 Plugin 'fugalh/desert.vim'
 Plugin 'vim-airline/vim-airline'
+Plugin 'tomasr/molokai'
 " Plugin 'fholgado/minibufexpl.vim'  " 不如airline 好看
 
 call vundle#end()            " required
@@ -125,6 +126,7 @@ let NERDTreeShowBookmarks=1 "当打开NERDTree窗口时，自动显示Bookmarks
 "我还省去了minibufexpl插件，因为我习惯在1个Tab下用多个buffer"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tagbar#flags = 'f'
 
 " 关闭状态显示空白符号计数,这个对我用处不大"
 "let g:airline#extensions#whitespace#enabled = 0
