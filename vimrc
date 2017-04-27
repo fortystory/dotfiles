@@ -12,6 +12,7 @@ Plugin 'ervandew/supertab'
 Plugin 'fugalh/desert.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'tomasr/molokai'
+Plugin 'sjl/gundo.vim'
 " Plugin 'fholgado/minibufexpl.vim'  " 不如airline 好看
 
 call vundle#end()            " required
@@ -35,6 +36,8 @@ map <leader>p :call PhpDocSingle()<CR>
 map <leader>n /todo<CR>:nohl<CR>
 " filetype plugin on
 " autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
+map <leader>u :GundoToggle<CR>
 
 "设置切换Buffer快捷键"
 nnoremap <C-N> :bn<CR>
@@ -77,7 +80,7 @@ set smarttab "当使用et将Tab替换为空格之后,按下一个Tab键就能插
 autocmd BufWritePost *.php call PHPSyntaxCheck()
  
 " php路径
-let g:PHP_SYNTAX_CHECK_BIN = '/home/users/xiuwei/athena/php/bin/php' 
+let g:PHP_SYNTAX_CHECK_BIN = '/home/xiuwei/athena/php/bin/php' 
 " if !exists('g:PHP_SYNTAX_CHECK_BIN')
 "     let g:PHP_SYNTAX_CHECK_BIN = 'php'
 " endif
