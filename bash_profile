@@ -8,7 +8,7 @@ fi
 alias ..="cd .."
 alias grep="grep --color"
 alias rm="rm -i"
-alias ww="echo `whoami`@`hostname -i`:`pwd`"
+alias ww="echo `whoami`@`hostname`\(`hostname -i`\):`pwd`"
 alias jj="jobs -l"
 alias ff="fg"
 
