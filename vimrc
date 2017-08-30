@@ -16,9 +16,9 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tomasr/molokai'
 Plugin 'sjl/gundo.vim'
 Plugin 'MaryHal/AceJump.vim'
-Plugin 'vim-ctrlspace/vim-ctrlspace'
-"Plugin 'Shougo/vimproc.vim'
-"Plugin 'Shougo/vimshell.vim'
+"Plugin 'vim-ctrlspace/vim-ctrlspace'
+Plugin 'shougo/vimproc.vim'
+Plugin 'shougo/vimshell.vim'
 "Plugin 'chriskempson/tomorrow-theme'
 
 call vundle#end()            " required
@@ -27,6 +27,7 @@ filetype plugin indent on    " required
 let mapleader = " "
 map <leader>b :TagbarToggle<CR> 
 map <leader>t :NERDTreeToggle<CR>
+map <leader>s :VimShell<CR>
 " map <leader>a ^i//<Esc> 
 "分屏向右 
 map <leader>l <C-w>l
@@ -36,15 +37,14 @@ map <leader>h <C-w>h
 map <leader>w <Esc>:w<CR>
 " 退出
 map <leader>q <Esc>:q<CR> 
-"php添加注释
-map <leader>p :call PhpDocSingle()<CR> 
 " 下一个todo
 map <leader>n /todo<CR>:nohl<CR>
+"php添加注释
+map <leader>p :call PhpDocSingle()<CR> 
 " filetype plugin on
 " autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
 map <leader>u :GundoToggle<CR>
-
 " 编辑模式下的快捷键
 " imap <C-Right> <ESC>ea
 " imap <C-Left> <ESC>bi
@@ -243,3 +243,19 @@ let g:CtrlSpaceSaveWorkspaceOnExit = 1
 
 " acejump
 nnoremap <Leader><Leader> :call AceJumpChar("")<CR>
+
+
+
+" php注释
+" Default values
+let g:pdv_cfg_Type = "mixed"
+let g:pdv_cfg_Package = ""
+let g:pdv_cfg_Version = "0.0.1"
+let g:pdv_cfg_Author = "修伟 <xiuwei@hunwater.com>"
+let g:pdv_cfg_Copyright = "Copyright Reserved 2016  上海正见文化传播有限公司"
+let g:pdv_cfg_License = "PHP Version 7.0 {@link http://www.php.net/license/7_0.txt}"
+
+
+""vimshell
+let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
+let g:vimshell_prompt = '$ '
