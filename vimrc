@@ -4,9 +4,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
  
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'majutsushi/tagbar'
+" Plugin 'majutsushi/tagbar' "暂时无用
 Plugin 'scrooloose/nerdtree'
-Plugin 'Lokaltog/vim-powerline'
 Plugin 'vim-scripts/PDV--phpDocumentor-for-Vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'ervandew/supertab'
@@ -19,32 +18,42 @@ Plugin 'MaryHal/AceJump.vim'
 "Plugin 'vim-ctrlspace/vim-ctrlspace'
 Plugin 'shougo/vimproc.vim'
 Plugin 'shougo/vimshell.vim'
+" Plugin 'vim-scripts/taglist.vim' "taglist
+"Plugin 'hrj/vim-DrawIt'   " 画ascii码画
 "Plugin 'chriskempson/tomorrow-theme'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 let mapleader = " "
-map <leader>b :TagbarToggle<CR> 
-map <leader>t :NERDTreeToggle<CR>
-map <leader>s :VimShell<CR>
+" nnoremap <leader>b :TagbarToggle<CR> " tagbar
+" nnoremap <leader>b :Tlist<CR> 
+nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>s :VimShell<CR>
 " map <leader>a ^i//<Esc> 
 "分屏向右 
-map <leader>l <C-w>l
+nnoremap <leader>l <C-w>l
+
 "分屏向左 
-map <leader>h <C-w>h
+nnoremap <leader>h <C-w>h
+
 " 保存 
-map <leader>w <Esc>:w<CR>
+nnoremap <leader>w <Esc>:w<CR>
+
 " 退出
-map <leader>q <Esc>:q<CR> 
+nnoremap <leader>q <Esc>:q<CR> 
+
 " 下一个todo
-map <leader>n /todo<CR>:nohl<CR>
+nnoremap <leader>n /todo<CR>:nohl<CR>
+
 "php添加注释
-map <leader>p :call PhpDocSingle()<CR> 
+nnoremap <leader>p :call PhpDocSingle()<CR> 
+
 " filetype plugin on
 " autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
-map <leader>u :GundoToggle<CR>
+" undo列表 
+nnoremap <leader>u :GundoToggle<CR>
 " 编辑模式下的快捷键
 " imap <C-Right> <ESC>ea
 " imap <C-Left> <ESC>bi
@@ -62,6 +71,8 @@ set nu
 set nowrap
 " set background=dark
 
+set autoindent
+set cindent
 set tabstop=4
 set ignorecase smartcase
 set relativenumber
@@ -102,7 +113,7 @@ endif
 autocmd BufWritePost *.php call PHPSyntaxCheck()
  
 " php路径
-let g:PHP_SYNTAX_CHECK_BIN = '/home/xiuwei/athena/php/bin/php' 
+let g:PHP_SYNTAX_CHECK_BIN = '/home/users/xiuwei/athena/php/bin/php' 
 " if !exists('g:PHP_SYNTAX_CHECK_BIN')
 "     let g:PHP_SYNTAX_CHECK_BIN = 'php'
 " endif
@@ -186,11 +197,11 @@ let g:airline_powerline_fonts = 0
 "打开tabline功能,方便查看Buffer和切换，这个功能比较不错"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tagbar#flags = 'f'
+" let g:airline#extensions#tagbar#flags = 'f'
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline_theme='luna'
-" let g:airline_theme="molokai" 
+" let g:airline_theme='luna'
+let g:airline_theme="molokai" 
 
 " 关闭状态显示空白符号计数,这个对我用处不大"
 " let g:airline#extensions#whitespace#enabled = 1
@@ -201,26 +212,29 @@ if !exists('g:airline_symbols')
 endif
 
 " unicode symbols
-" let g:airline_left_sep = '▶'
-" let g:airline_right_sep = '◀'
-" let g:airline_symbols.crypt = '🔒'
-" let g:airline_symbols.linenr = '¶'
-" let g:airline_symbols.branch = '⎇'
-" let g:airline_symbols.paste = '∥'
-" let g:airline_symbols.notexists = '∄'
-" let g:airline_symbols.whitespace = 'Ξ'
+if get(g:, 'airline_powerline_fonts', 1)
+	let g:airline_left_sep = '▶'
+	let g:airline_right_sep = '◀'
+	let g:airline_symbols.crypt = '🔒'
+	let g:airline_symbols.linenr = '¶'
+	let g:airline_symbols.branch = '⎇'
+	let g:airline_symbols.paste = '∥'
+	let g:airline_symbols.notexists = '∄'
+	let g:airline_symbols.whitespace = 'Ξ'
+endif
 
 " powerline symbols
 if get(g:, 'airline_powerline_fonts', 0)
-  let g:airline_left_sep = ''
-  let g:airline_left_alt_sep = ''
-  let g:airline_right_sep = ''
-  let g:airline_right_alt_sep = ''
-  let g:airline_symbols.branch = ''
-  let g:airline_symbols.readonly = ''
-  let g:airline_symbols.linenr = ''
-  let g:airline_symbols.maxlinenr= ''
+	let g:airline_left_sep = ''
+	let g:airline_left_alt_sep = ''
+	let g:airline_right_sep = ''
+	let g:airline_right_alt_sep = ''
+	let g:airline_symbols.branch = ''
+	let g:airline_symbols.readonly = ''
+	let g:airline_symbols.linenr = ''
+	let g:airline_symbols.maxlinenr= ''
 endif
+
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#tab_nr_type= 1
 let g:airline#extensions#tabline#show_tab_type = 1
@@ -236,6 +250,8 @@ hi link CtrlSpaceStatus   StatusLine
 hi link CtrlSpaceSearch IncSearch
 hi CtrlSpaceSearch guifg=#cb4b16 guibg=NONE gui=bold ctermfg=9 ctermbg=NONE term=bold cterm=bold
 " nnoremap <silent><leader><leader> :CtrlSpace O<CR>
+"
+"
 " nnoremap <silent><C-p> :CtrlSpace O<CR>
 let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
 let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
@@ -257,5 +273,18 @@ let g:pdv_cfg_License = "PHP Version 7.0 {@link http://www.php.net/license/7_0.t
 
 
 ""vimshell
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_prompt = '$ '
+" 下面两句是把显示一行路径  下面一个$提示符
+"let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
+"let g:vimshell_prompt = "$ "
+
+" Use current directory as vimshell prompt.将当前目录作为提示符
+let g:vimshell_prompt_expr = 'escape(fnamemodify(getcwd(), ":~").">", "\\[]()?! ")." "'
+let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+> '
+
+
+" ctags
+" let Tlist_Show_One_File=1    "只显示当前文件的tags
+" let Tlist_WinWidth=40        "设置taglist宽度
+" let Tlist_Exit_OnlyWindow=1  "tagList窗口是最后一个窗口，则退出Vim
+" let Tlist_Use_Right_Window=1 "在Vim窗口右侧显示taglist窗口
+" nnoremap <Leader>c :call Tlist()<CR>
