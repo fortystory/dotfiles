@@ -16,11 +16,12 @@ Plugin 'tomasr/molokai'
 Plugin 'sjl/gundo.vim'
 Plugin 'MaryHal/AceJump.vim'
 "Plugin 'vim-ctrlspace/vim-ctrlspace'
-Plugin 'shougo/vimproc.vim'
-Plugin 'shougo/vimshell.vim'
 " Plugin 'vim-scripts/taglist.vim' "taglist
 "Plugin 'hrj/vim-DrawIt'   " 画ascii码画
 "Plugin 'chriskempson/tomorrow-theme'
+
+"   Plugin 'shougo/vimproc.vim'
+"   Plugin 'shougo/vimshell.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -29,7 +30,7 @@ let mapleader = " "
 " nnoremap <leader>b :TagbarToggle<CR> " tagbar
 " nnoremap <leader>b :Tlist<CR> 
 nnoremap <leader>t :NERDTreeToggle<CR>
-nnoremap <leader>s :VimShell<CR>
+"   nnoremap <leader>s :VimShell<CR>
 " map <leader>a ^i//<Esc> 
 "分屏向右 
 nnoremap <leader>l <C-w>l
