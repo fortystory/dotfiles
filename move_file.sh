@@ -20,5 +20,10 @@ fi
 if [ -f "$HOME/.vim/" ];then
 	mv -f $HOME/.vim/ $HOME/.back/.vim/
 fi
+
+if [ -f "$HOME/.zshrc" ];then
+	mv $HOME/.zshrc $HOME/.back/.zshrc
+fi
 ln -s $PWD/vimrc $HOME/.vimrc
 ln -s $PWD/vim/ $HOME/.vim
+ln -s $PWD/zshrc $HOME/.zshrc
