@@ -165,6 +165,22 @@ let g:airline#extensions#whitespace#symbol = '!'
 
 let g:airline_theme='bubblegum'
 
+" or copy paste the following into your vimrc for shortform text
+" 普通模式显示N 插入显示I 可视显示V
+let g:airline_mode_map = {
+  \ '__' : '-',
+  \ 'n'  : 'N',
+  \ 'i'  : 'I',
+  \ 'R'  : 'R',
+  \ 'c'  : 'C',
+  \ 'v'  : 'V',
+  \ 'V'  : 'V',
+  \ '' : 'V',
+  \ 's'  : 'S',
+  \ 'S'  : 'S',
+  \ '' : 'S',
+  \ }
+
 "
 set laststatus=2
 set lazyredraw
