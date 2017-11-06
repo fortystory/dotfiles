@@ -1,0 +1,21 @@
+#256 color
+#set -g default-terminal "tmux-256color"
+set -g default-terminal "screen-256color"
+set -ga terminal-overrides ",xterm-256color:Tc"
+
+set -g base-index 1 # 设置窗口的起始下标为1
+set -g pane-base-index 1 # 设置面板的起始下标为1
+
+#powerline
+source "/usr/local/lib/python3.5/dist-packages/powerline/bindings/tmux/powerline.conf"
+
+#vim hjkl
+setw -g mode-keys vi
+
+# 重命名终端
+set -g set-titles on
+#set -g set-titles-string "&#039;#(whoami)::#h::#(curl ipecho.net/plain;echo)&#039";
+#set -g set-titles-string "#T";
+
+bind r source-file ~/.tmux.conf \; display "reloaded .tmux.conf"
+

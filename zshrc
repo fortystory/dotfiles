@@ -1,12 +1,16 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export GOPATH=$HOME/gocode
+export PATH=$HOME/bin:$PATH:/mnt/c/tools/wsl-terminal:$GOPATH/bin
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/xiuwei/.oh-my-zsh
+export ZSH=/home/xiuwei/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# ZSH_THEME="powerlevel9k/powerlevel9k"
+# ZSH_THEME="powerline"
 ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -72,6 +76,15 @@ export LANG=zh_CN.UTF-8
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+
+# open-terminal
+[[ -z "$TMUX" && -n "$USE_TMUX" ]] && {
+    [[ -n "$ATTACH_ONLY" ]] && { tmux a 2>/dev/null || { cd && exec tmux }
+		exit
+	}
+	tmux new-window -c "$PWD" 2>/dev/null && exec tmux a
+	exec tmux
+}
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"

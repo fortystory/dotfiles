@@ -1,6 +1,7 @@
 scriptencoding utf-8
 set nocp "让 VIM 工作在不兼容模式下
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=/usr/local/lib/python3.5/dist-packages/powerline/bindings/vim/
 call vundle#begin()
  
 Plugin 'VundleVim/Vundle.vim'
@@ -30,7 +31,7 @@ let mapleader = " "
 " nnoremap <leader>b :TagbarToggle<CR> " tagbar
 " nnoremap <leader>b :Tlist<CR> 
 nnoremap <leader>t :NERDTreeToggle<CR>
-"   nnoremap <leader>s :VimShell<CR>
+" noremap <leader>s :VimShell<CR>
 " map <leader>a ^i//<Esc> 
 "分屏向右 
 nnoremap <leader>l <C-w>l
@@ -83,7 +84,8 @@ set novisualbell
 syntax on
 set hls   "搜索时高亮显示被找到的文本
 set is    "搜索时在未完全输入完毕要检索的文本时就开始检索
-set ambiwidth=double  "防止特殊符号无法正常显示
+"打开下面配置 powerline会显示不正确
+"set ambiwidth=double  "防止特殊符号无法正常显示
 " let g:rehash256 = 1
 set t_Co=256 "支持256颜色
 " colorscheme darkblue 
@@ -114,7 +116,7 @@ endif
 autocmd BufWritePost *.php call PHPSyntaxCheck()
  
 " php路径
-let g:PHP_SYNTAX_CHECK_BIN = '/home/users/xiuwei/athena/php/bin/php' 
+let g:PHP_SYNTAX_CHECK_BIN = '/home/xiuwei/bin/php' 
 " if !exists('g:PHP_SYNTAX_CHECK_BIN')
 "     let g:PHP_SYNTAX_CHECK_BIN = 'php'
 " endif
@@ -144,115 +146,29 @@ autocmd FileType html,css EmmetInstall
 " emmet 默认热键<C-Y>
 let g:user_emmet_leader_key="<c-e>"
 
-
 colorscheme molokai 
 let g:molokai_original = 1 
 " colorscheme desert
-
 
 " autocmd VimEnter * NERDTree "在 vim 启动的时候默认开启 NERDTree（autocmd 可以缩写为 au）
 let NERDTreeShowBookmarks=1 "当打开NERDTree窗口时，自动显示Bookmarks  
 
 " airline setting
-let g:airline_skip_empty_sections = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tmuxline#enabled = 1
-let g:Powerline_sybols = 'unicode'
-set laststatus=2
-set lazyredraw
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#fnamecollapse = 1
-let g:airline#extensions#tabline#fnametruncate = 0
-
-" 抄的spacevim配置
-let g:spacevim_buffer_index_type = 1
-
-if g:spacevim_buffer_index_type < 3
-  let g:airline#extensions#tabline#buffer_idx_mode = 1
-  let g:airline#extensions#tabline#buffer_idx_format = {}
-  "for s:i in range(9)
-  "  call extend(g:airline#extensions#tabline#buffer_idx_format,{s:i:SpaceVim#api#import('messletters').bubble_num(s:i, g:spacevim_buffer_index_type).' '})
-  "endfor
-  "unlet s:i
-elseif g:spacevim_buffer_index_type == 3
-  let g:airline#extensions#tabline#buffer_idx_mode = 1
-elseif g:spacevim_buffer_index_type == 4
-  let g:airline#extensions#tabline#buffer_idx_mode = 1
-  let g:airline#extensions#tabline#buffer_idx_format = {
-        \ '0': '0 ',
-        \ '1': '1 ',
-        \ '2': '2 ',
-        \ '3': '3 ',
-        \ '4': '4 ',
-        \ '5': '5 ',
-        \ '6': '6 ',
-        \ '7': '7 ',
-        \ '8': '8 ',
-        \ '9': '9 '
-        \}
-endif
-
-"这个是安装字体后 必须设置此项" 
-let g:airline_powerline_fonts = 0
-
-"打开tabline功能,方便查看Buffer和切换，这个功能比较不错"
+let g:airline_powerline_fonts = 1
+"打开tabline功能
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
-" let g:airline#extensions#tagbar#flags = 'f'
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-" let g:airline_theme='luna'
-let g:airline_theme="molokai" 
 
 " 关闭状态显示空白符号计数,这个对我用处不大"
-" let g:airline#extensions#whitespace#enabled = 1
-" let g:airline#extensions#whitespace#symbol = '!'
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#whitespace#symbol = '!'
 
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
+let g:airline_theme='bubblegum'
 
-" unicode symbols
-if get(g:, 'airline_powerline_fonts', 1)
-	let g:airline_left_sep = '▶'
-	let g:airline_right_sep = '◀'
-	let g:airline_symbols.crypt = '🔒'
-	let g:airline_symbols.linenr = '¶'
-	let g:airline_symbols.branch = '⎇'
-	let g:airline_symbols.paste = '∥'
-	let g:airline_symbols.notexists = '∄'
-	let g:airline_symbols.whitespace = 'Ξ'
-endif
-
-" powerline symbols
-if get(g:, 'airline_powerline_fonts', 0)
-	let g:airline_left_sep = ''
-	let g:airline_left_alt_sep = ''
-	let g:airline_right_sep = ''
-	let g:airline_right_alt_sep = ''
-	let g:airline_symbols.branch = ''
-	let g:airline_symbols.readonly = ''
-	let g:airline_symbols.linenr = ''
-	let g:airline_symbols.maxlinenr= ''
-endif
-
-let g:airline#extensions#tabline#show_tab_nr = 1
-let g:airline#extensions#tabline#tab_nr_type= 1
-let g:airline#extensions#tabline#show_tab_type = 1
-let g:airline#extensions#tabline#buffers_label = 'buffers'
-" let g:airline#extensions#tabline#tabs_label = 'tabs'
-
-" ctrlspace
-let g:CtrlSpaceSearchTiming = 500
-hi link CtrlSpaceNormal   PMenu
-hi link CtrlSpaceSelected PMenuSel
-hi link CtrlSpaceSearch   Search
-hi link CtrlSpaceStatus   StatusLine
-hi link CtrlSpaceSearch IncSearch
-hi CtrlSpaceSearch guifg=#cb4b16 guibg=NONE gui=bold ctermfg=9 ctermbg=NONE term=bold cterm=bold
-" nnoremap <silent><leader><leader> :CtrlSpace O<CR>
 "
-"
+set laststatus=2
+set lazyredraw
+
 " nnoremap <silent><C-p> :CtrlSpace O<CR>
 let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
 let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
@@ -261,15 +177,13 @@ let g:CtrlSpaceSaveWorkspaceOnExit = 1
 " acejump
 nnoremap <Leader><Leader> :call AceJumpChar("")<CR>
 
-
-
 " php注释
 " Default values
 let g:pdv_cfg_Type = "mixed"
 let g:pdv_cfg_Package = ""
 let g:pdv_cfg_Version = "0.0.1"
 let g:pdv_cfg_Author = "修伟 <xiuwei@hunwater.com>"
-let g:pdv_cfg_Copyright = "Copyright Reserved 2016  上海正见文化传播有限公司"
+let g:pdv_cfg_Copyright = "Copyright ''"
 let g:pdv_cfg_License = "PHP Version 7.0 {@link http://www.php.net/license/7_0.txt}"
 
 
@@ -279,8 +193,8 @@ let g:pdv_cfg_License = "PHP Version 7.0 {@link http://www.php.net/license/7_0.t
 "let g:vimshell_prompt = "$ "
 
 " Use current directory as vimshell prompt.将当前目录作为提示符
-let g:vimshell_prompt_expr = 'escape(fnamemodify(getcwd(), ":~").">", "\\[]()?! ")." "'
-let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+> '
+" let g:vimshell_prompt_expr = 'escape(fnamemodify(getcwd(), ":~").">", "\\[]()?! ")." "'
+" let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+> '
 
 
 " ctags

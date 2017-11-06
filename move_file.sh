@@ -24,6 +24,11 @@ fi
 if [ -f "$HOME/.zshrc" ];then
 	mv $HOME/.zshrc $HOME/.back/.zshrc
 fi
+
+if [ -f "$HOME/.tmux.conf" ];then
+	mv $HOME/.zshrc $HOME/.back/.zshrc
+fi
 ln -s $PWD/vimrc $HOME/.vimrc
 ln -s $PWD/vim/ $HOME/.vim
 ln -s $PWD/zshrc $HOME/.zshrc
+ln -s $PWD/tmux.conf $HOME/.tmux.conf
