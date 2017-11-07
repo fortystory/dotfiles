@@ -16,6 +16,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tomasr/molokai'
 Plugin 'sjl/gundo.vim'
 Plugin 'MaryHal/AceJump.vim'
+Plugin 'itchyny/calendar.vim'
 "Plugin 'vim-ctrlspace/vim-ctrlspace'
 " Plugin 'vim-scripts/taglist.vim' "taglist
 "Plugin 'hrj/vim-DrawIt'   " 画ascii码画
@@ -69,12 +70,16 @@ nnoremap <silent>[a :next<CR>
 nnoremap <silent>]a :prev<CR>
 
 
+" 开启命令超时,超时时间300毫秒
+set to 
+set tm=300 
+
 set nu
 set nowrap
 " set background=dark
 
-set autoindent
-set cindent
+set autoindent "根据上一行决定新行的缩进
+set cindent 
 set tabstop=4
 set ignorecase smartcase
 set relativenumber
@@ -219,3 +224,11 @@ let g:pdv_cfg_License = "PHP Version 7.0 {@link http://www.php.net/license/7_0.t
 " let Tlist_Exit_OnlyWindow=1  "tagList窗口是最后一个窗口，则退出Vim
 " let Tlist_Use_Right_Window=1 "在Vim窗口右侧显示taglist窗口
 " nnoremap <Leader>c :call Tlist()<CR>
+
+
+"calendar 配置
+nnoremap <leader>c :Calendar<CR>
+nnoremap <leader>cc :Calendar -view=clock<CR>
+nnoremap <leader>cw :Calendar -view=week<CR>
+let g:calendar_first_day = 'sunday'
+let g:calendar_time_zone = '8000'
