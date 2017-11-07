@@ -100,4 +100,3 @@ export LANG=zh_CN.UTF-8
 alias -s php=vim
 alias -s html=vim
 alias vimrc="vim ~/.vimrc"
-alias j="jobs"
