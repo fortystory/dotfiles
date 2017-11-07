@@ -57,6 +57,19 @@ nnoremap <leader>p :call PhpDocSingle()<CR>
 
 " undo列表 
 nnoremap <leader>u :GundoToggle<CR>
+
+" 选择buffer 
+nnoremap <leader>1 :b1<CR>
+nnoremap <leader>2 :b2<CR>
+nnoremap <leader>3 :b3<CR>
+nnoremap <leader>4 :b4<CR>
+nnoremap <leader>5 :b5<CR>
+nnoremap <leader>6 :b6<CR>
+nnoremap <leader>7 :b7<CR>
+nnoremap <leader>8 :b8<CR>
+nnoremap <leader>9 :b9<CR>
+nnoremap <leader>0 :b10<CR>
+
 " 编辑模式下的快捷键
 " imap <C-Right> <ESC>ea
 " imap <C-Left> <ESC>bi
