@@ -1,7 +1,7 @@
 scriptencoding utf-8
 set nocp "让 VIM 工作在不兼容模式下
 set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=/usr/local/lib/python3.5/dist-packages/powerline/bindings/vim/
+" set rtp+=/usr/local/lib/python3.5/dist-packages/powerline/bindings/vim/
 call vundle#begin()
  
 Plugin 'VundleVim/Vundle.vim'
@@ -14,6 +14,8 @@ Plugin 'fugalh/desert.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tomasr/molokai'
+"Plugin 'junegunn/seoul256.vim'
+Plugin 'tpope/vim-fugitive'
 Plugin 'sjl/gundo.vim'
 Plugin 'MaryHal/AceJump.vim'
 Plugin 'itchyny/calendar.vim'
@@ -82,14 +84,16 @@ nnoremap <silent>]b :bn<CR>
 nnoremap <silent>[a :next<CR>
 nnoremap <silent>]a :prev<CR>
 
+" 中文帮助
+set helplang=cn
 
 " 开启命令超时,超时时间300毫秒
 set to 
-set tm=300 
+set tm=233 
 
 set nu
 set nowrap
-" set background=dark
+set background=dark
 
 set autoindent "根据上一行决定新行的缩进
 set cindent 
@@ -166,7 +170,8 @@ let g:user_emmet_leader_key="<c-e>"
 
 colorscheme molokai 
 let g:molokai_original = 1 
-" colorscheme desert
+" let g:seoul256_background = 233
+" colorscheme seoul256
 
 " autocmd VimEnter * NERDTree "在 vim 启动的时候默认开启 NERDTree（autocmd 可以缩写为 au）
 let NERDTreeShowBookmarks=1 "当打开NERDTree窗口时，自动显示Bookmarks  
@@ -181,7 +186,7 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#whitespace#symbol = '!'
 
-let g:airline_theme='bubblegum'
+let g:airline_theme='deus'
 
 " or copy paste the following into your vimrc for shortform text
 " 普通模式显示N 插入显示I 可视显示V
