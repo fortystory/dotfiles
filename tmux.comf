@@ -19,3 +19,5 @@ set -g set-titles on
 
 bind r source-file ~/.tmux.conf \; display "reloaded .tmux.conf"
 
+# 自动重新编号 window
+set -g renumber-windows on
