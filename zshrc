@@ -4,7 +4,7 @@ export GOPATH=$HOME/gocode
 export PATH=$HOME/bin:$PATH:/mnt/c/tools/wsl-terminal:$GOPATH/bin
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/xiuwei/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -97,5 +97,17 @@ export LANG=zh_CN.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias -s php=vim
+alias -s c=vim
+alias -s h=vim
+alias -s sh=vim
+alias -s cpp=vim
 alias -s html=vim
 alias vimrc="vim ~/.vimrc"
+
+if [ -f "$HOME/.my-alias.sh" ];then
+	source $HOME/.my-alias.sh
+else
+	echo "提示:没有'.my-alias.sh文件'"
+fi
+
+
