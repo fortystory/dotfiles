@@ -60,18 +60,6 @@ nnoremap <leader>p :call PhpDocSingle()<CR>
 " undo列表 
 nnoremap <leader>u :GundoToggle<CR>
 
-" 选择buffer 
-nnoremap <leader>1 :b1<CR>
-nnoremap <leader>2 :b2<CR>
-nnoremap <leader>3 :b3<CR>
-nnoremap <leader>4 :b4<CR>
-nnoremap <leader>5 :b5<CR>
-nnoremap <leader>6 :b6<CR>
-nnoremap <leader>7 :b7<CR>
-nnoremap <leader>8 :b8<CR>
-nnoremap <leader>9 :b9<CR>
-nnoremap <leader>0 :b10<CR>
-
 " 编辑模式下的快捷键
 " imap <C-Right> <ESC>ea
 " imap <C-Left> <ESC>bi
@@ -204,7 +192,6 @@ let g:airline_mode_map = {
   \ '' : 'S',
   \ }
 
-"
 set laststatus=2
 set lazyredraw
 
@@ -225,7 +212,6 @@ let g:pdv_cfg_Author = "修伟 <xiuwei@hunwater.com>"
 let g:pdv_cfg_Copyright = "Copyright ''"
 let g:pdv_cfg_License = "PHP Version 7.0 {@link http://www.php.net/license/7_0.txt}"
 
-
 ""vimshell
 " 下面两句是把显示一行路径  下面一个$提示符
 "let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
@@ -235,7 +221,6 @@ let g:pdv_cfg_License = "PHP Version 7.0 {@link http://www.php.net/license/7_0.t
 " let g:vimshell_prompt_expr = 'escape(fnamemodify(getcwd(), ":~").">", "\\[]()?! ")." "'
 " let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+> '
 
-
 " ctags
 " let Tlist_Show_One_File=1    "只显示当前文件的tags
 " let Tlist_WinWidth=40        "设置taglist宽度
@@ -243,10 +228,24 @@ let g:pdv_cfg_License = "PHP Version 7.0 {@link http://www.php.net/license/7_0.t
 " let Tlist_Use_Right_Window=1 "在Vim窗口右侧显示taglist窗口
 " nnoremap <Leader>c :call Tlist()<CR>
 
-
 "calendar 配置
 nnoremap <leader>c :Calendar<CR>
 nnoremap <leader>cc :Calendar -view=clock<CR>
 nnoremap <leader>cw :Calendar -view=week<CR>
 let g:calendar_first_day = 'sunday'
 let g:calendar_time_zone = '8000'
+
+" 自定义快捷键
+nnoremap <leader>sw demmwvep`mPb "switch word 
+" 选择buffer 
+nnoremap <leader>1 :b1<CR>
+nnoremap <leader>2 :b2<CR>
+nnoremap <leader>3 :b3<CR>
+nnoremap <leader>4 :b4<CR>
+nnoremap <leader>5 :b5<CR>
+nnoremap <leader>6 :b6<CR>
+nnoremap <leader>7 :b7<CR>
+nnoremap <leader>8 :b8<CR>
+nnoremap <leader>9 :b9<CR>
+nnoremap <leader>0 :b10<CR>
+
