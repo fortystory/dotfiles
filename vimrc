@@ -36,17 +36,6 @@ let mapleader = " "
 nnoremap <leader>t :NERDTreeToggle<CR>
 " noremap <leader>s :VimShell<CR>
 " map <leader>a ^i//<Esc> 
-"分屏向右 
-nnoremap <leader>l <C-w>l
-
-"分屏向左 
-nnoremap <leader>h <C-w>h
-
-" 保存 
-nnoremap <leader>w <Esc>:w<CR>
-
-" 退出
-nnoremap <leader>q <Esc>:q<CR> 
 
 " 下一个todo
 nnoremap <leader>n /todo<CR>:nohl<CR>
@@ -248,4 +237,14 @@ nnoremap <leader>7 :b7<CR>
 nnoremap <leader>8 :b8<CR>
 nnoremap <leader>9 :b9<CR>
 nnoremap <leader>0 :b10<CR>
+nnoremap <leader>l :buffers !<CR>
+nnoremap <leader><tab> :e #<CR>
+
+"  格式化xml 从csdn上抄的 http://blog.csdn.net/joeblackzqq/article/details/7427220
+function Xml()
+   set filetype=xml
+   :%s/></>\r</g "把><替换成>回车<
+   :normal gg=G
+endfunction
+nnoremap <leader>x :call Xml()<CR>
 
