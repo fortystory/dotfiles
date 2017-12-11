@@ -103,6 +103,7 @@ alias -s sh=vim
 alias -s cpp=vim
 alias -s html=vim
 alias vimrc="vim ~/.vimrc"
+alias ww="echo `whoami`@`hostname`\(`hostname -i`\):`pwd`"
 
 if [ -f "$HOME/.my-alias.sh" ];then
 	source $HOME/.my-alias.sh
