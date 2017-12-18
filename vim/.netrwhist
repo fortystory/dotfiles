@@ -1,6 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/home/xiuwei/dotfiles/vim'
-let g:netrw_dirhist_2='/home/users/xiuwei/athena/app/hunwater_distribution_system/appapi/controllers'
-let g:netrw_dirhist_3='/home/users/xiuwei/athena/app/hunwater_distribution_system/appapi'
-let g:netrw_dirhist_4='/home/users/xiuwei/athena/app/hunwater_distribution_system/appapi/models'

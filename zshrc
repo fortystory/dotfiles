@@ -1,10 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export GOPATH=$HOME/gocode
-export PATH=$HOME/bin:$PATH:/mnt/c/tools/wsl-terminal:$GOPATH/bin
+export PATH=$HOME/bin:$PATH:$GOPATH/bin
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/xiuwei/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -97,5 +97,33 @@ export LANG=zh_CN.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias -s php=vim
+alias -s c=vim
+alias -s h=vim
+alias -s sh=vim
+alias -s cpp=vim
 alias -s html=vim
 alias vimrc="vim ~/.vimrc"
+alias ww="echo `whoami`@`hostname`\(`hostname -i`\):`pwd`"
+
+if [ -f "$HOME/.my-alias.sh" ];then
+	source $HOME/.my-alias.sh
+else
+	echo "提示:没有'.my-alias.sh文件'"
+fi
+if [[ -e /dev/lxss ]] {
+	#创建硬链接
+	#ln -s /mnt/c/Users/forty/OneDrive/ ~/onedrive
+	#ln -s /mnt/c/Users/forty/Desktop ~/desktop
+	alias cmdtool='/mnt/c/tools/wsl-terminal/cmdtool'
+	alias cw='/mnt/c/tools/wsl-terminal/cmdtool wstartex'
+	alias cmd='/init /mnt/c/Windows/System32/cmd.exe'
+	alias ipconfig='cmd /c ipconfig | ucat'
+	alias tl='cmd /c tasklist'
+	alias tlg='cmd /c tasklist | grep'
+	#alias netstat='cmd /c netstat'^c后还会有内容输出... 
+	alias ps1='cmd /c powershell'
+	#控制windows播放器
+	alias ns='cmdtool wstartex ~/onedrive/script/ahk/media/ns.ahk'
+	alias prevsong='cmdtool wstartex ~/onedrive/script/ahk/media/ps.ahk'
+	alias pp='cmdtool wstartex ~/onedrive/script/ahk/media/pp.ahk'
+}

@@ -36,17 +36,6 @@ let mapleader = " "
 nnoremap <leader>t :NERDTreeToggle<CR>
 " noremap <leader>s :VimShell<CR>
 " map <leader>a ^i//<Esc> 
-"分屏向右 
-nnoremap <leader>l <C-w>l
-
-"分屏向左 
-nnoremap <leader>h <C-w>h
-
-" 保存 
-nnoremap <leader>w <Esc>:w<CR>
-
-" 退出
-nnoremap <leader>q <Esc>:q<CR> 
 
 " 下一个todo
 nnoremap <leader>n /todo<CR>:nohl<CR>
@@ -59,18 +48,6 @@ nnoremap <leader>p :call PhpDocSingle()<CR>
 
 " undo列表 
 nnoremap <leader>u :GundoToggle<CR>
-
-" 选择buffer 
-nnoremap <leader>1 :b1<CR>
-nnoremap <leader>2 :b2<CR>
-nnoremap <leader>3 :b3<CR>
-nnoremap <leader>4 :b4<CR>
-nnoremap <leader>5 :b5<CR>
-nnoremap <leader>6 :b6<CR>
-nnoremap <leader>7 :b7<CR>
-nnoremap <leader>8 :b8<CR>
-nnoremap <leader>9 :b9<CR>
-nnoremap <leader>0 :b10<CR>
 
 " 编辑模式下的快捷键
 " imap <C-Right> <ESC>ea
@@ -128,6 +105,13 @@ set smarttab "当使用et将Tab替换为空格之后,按下一个Tab键就能插
 " set spell "打开拼写检查.拼写有错的单词下方会有红色波浪线,将光标放在单词上,按 z= 就会出现拼写建议,按 ]s 可以直接跳到下一个拼写错误处. 
 set nocompatible
 set hidden
+
+" 下面一行用于使用 :set list 显示空白字符时对 空格 tab 换行的映射
+" set listchars=tab:>-,space:⊔,trail:-,eol:¬
+" set list
+" set listchars=tab:├-,space:∙,trail:‗,eol:¬
+"set listchars=tab:»‐,space:∙,trail:‗,eol:¬
+
 if has("gui_running")
     " Settings for MacVim and Inconsolata font
     let g:CtrlSpaceSymbols = { "File": "◯", "CTab": "▣", "Tabs": "▢" }
@@ -204,7 +188,6 @@ let g:airline_mode_map = {
   \ '' : 'S',
   \ }
 
-"
 set laststatus=2
 set lazyredraw
 
@@ -225,7 +208,6 @@ let g:pdv_cfg_Author = "修伟 <xiuwei@hunwater.com>"
 let g:pdv_cfg_Copyright = "Copyright ''"
 let g:pdv_cfg_License = "PHP Version 7.0 {@link http://www.php.net/license/7_0.txt}"
 
-
 ""vimshell
 " 下面两句是把显示一行路径  下面一个$提示符
 "let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
@@ -235,7 +217,6 @@ let g:pdv_cfg_License = "PHP Version 7.0 {@link http://www.php.net/license/7_0.t
 " let g:vimshell_prompt_expr = 'escape(fnamemodify(getcwd(), ":~").">", "\\[]()?! ")." "'
 " let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+> '
 
-
 " ctags
 " let Tlist_Show_One_File=1    "只显示当前文件的tags
 " let Tlist_WinWidth=40        "设置taglist宽度
@@ -243,10 +224,35 @@ let g:pdv_cfg_License = "PHP Version 7.0 {@link http://www.php.net/license/7_0.t
 " let Tlist_Use_Right_Window=1 "在Vim窗口右侧显示taglist窗口
 " nnoremap <Leader>c :call Tlist()<CR>
 
-
 "calendar 配置
 nnoremap <leader>c :Calendar<CR>
 nnoremap <leader>cc :Calendar -view=clock<CR>
 nnoremap <leader>cw :Calendar -view=week<CR>
 let g:calendar_first_day = 'sunday'
 let g:calendar_time_zone = '8000'
+
+" 自定义快捷键
+nnoremap <leader>sw demmwvep`mPb "switch word 
+" 选择buffer 
+nnoremap <leader>1 :b1<CR>
+nnoremap <leader>2 :b2<CR>
+nnoremap <leader>3 :b3<CR>
+nnoremap <leader>4 :b4<CR>
+nnoremap <leader>5 :b5<CR>
+nnoremap <leader>6 :b6<CR>
+nnoremap <leader>7 :b7<CR>
+nnoremap <leader>8 :b8<CR>
+nnoremap <leader>9 :b9<CR>
+nnoremap <leader>0 :b10<CR>
+nnoremap <leader>l :buffers !<CR>
+" nnoremap <leader><tab> :e #<CR> " CTRL<CR> 为默认 不重新映射了
+nnoremap <leader><tab> :bn<CR> 为默认 不重新映射了
+
+"  格式化xml 从csdn上抄的 http://blog.csdn.net/joeblackzqq/article/details/7427220
+function Xml()
+   set filetype=xml
+   :%s/></>\r</g "把><替换成>回车<
+   :normal gg=G
+endfunction
+nnoremap <leader>x :call Xml()<CR>
+
