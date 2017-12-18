@@ -124,6 +124,6 @@ if [[ -e /dev/lxss ]] {
 	alias ps1='cmd /c powershell'
 	#控制windows播放器
 	alias ns='cmdtool wstartex ~/onedrive/script/ahk/media/ns.ahk'
-	alias ps='cmdtool wstartex ~/onedrive/script/ahk/media/ps.ahk'
+	alias prevsong='cmdtool wstartex ~/onedrive/script/ahk/media/ps.ahk'
 	alias pp='cmdtool wstartex ~/onedrive/script/ahk/media/pp.ahk'
 }
