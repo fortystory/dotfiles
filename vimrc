@@ -105,6 +105,13 @@ set smarttab "当使用et将Tab替换为空格之后,按下一个Tab键就能插
 " set spell "打开拼写检查.拼写有错的单词下方会有红色波浪线,将光标放在单词上,按 z= 就会出现拼写建议,按 ]s 可以直接跳到下一个拼写错误处. 
 set nocompatible
 set hidden
+
+" 下面一行用于使用 :set list 显示空白字符时对 空格 tab 换行的映射
+" set listchars=tab:>-,space:⊔,trail:-,eol:¬
+" set list
+set listchars=tab:├-,space:∙,trail:‗,eol:¬
+"set listchars=tab:»‐,space:∙,trail:‗,eol:¬
+
 if has("gui_running")
     " Settings for MacVim and Inconsolata font
     let g:CtrlSpaceSymbols = { "File": "◯", "CTab": "▣", "Tabs": "▢" }
@@ -238,7 +245,8 @@ nnoremap <leader>8 :b8<CR>
 nnoremap <leader>9 :b9<CR>
 nnoremap <leader>0 :b10<CR>
 nnoremap <leader>l :buffers !<CR>
-nnoremap <leader><tab> :e #<CR>
+" nnoremap <leader><tab> :e #<CR> " CTRL<CR> 为默认 不重新映射了
+nnoremap <leader><tab> :bn<CR> 为默认 不重新映射了
 
 "  格式化xml 从csdn上抄的 http://blog.csdn.net/joeblackzqq/article/details/7427220
 function Xml()
