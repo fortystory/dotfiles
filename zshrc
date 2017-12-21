@@ -127,3 +127,5 @@ if [[ -e /dev/lxss ]] {
 	alias prevsong='cmdtool wstartex ~/onedrive/script/ahk/media/ps.ahk'
 	alias pp='cmdtool wstartex ~/onedrive/script/ahk/media/pp.ahk'
 }
+#显示日历
+ccal -u 2> /dev/null
