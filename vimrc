@@ -105,6 +105,12 @@ set smarttab "当使用et将Tab替换为空格之后,按下一个Tab键就能插
 " set spell "打开拼写检查.拼写有错的单词下方会有红色波浪线,将光标放在单词上,按 z= 就会出现拼写建议,按 ]s 可以直接跳到下一个拼写错误处. 
 set nocompatible
 set hidden
+" 在vim的补全时忽略某些文件
+set wildignore+=*.o,*~,*.pyc,*.class
+" 补全列表方式 和循环方式
+set wildmode=full
+" 补全提示增强
+set wildmenu
 
 " 下面一行用于使用 :set list 显示空白字符时对 空格 tab 换行的映射
 " set listchars=tab:>-,space:⊔,trail:-,eol:¬
