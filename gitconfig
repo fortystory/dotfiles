@@ -1,0 +1,16 @@
+[user]
+	email = forty40@live.cn
+	name = 修伟 
+[core]
+	editor = vim
+	pager = more
+	pager = less
+[merge]
+	tool = vimdiff
+[alias]
+	l = log --stat
+	st = status
+	diff = difftool
+	dt = difftool
+[mergetool]
+	prompt = false
