@@ -110,9 +110,12 @@ set hidden
 " 里面的配置可能再vim8以下的版本中报错
 if (version > 800)
 	set tagcase=smart
-	" 在vim的补全时忽略某些文件
-	set wildignore+=*.o,*~,*.pyc,*.class
+	" 下面一行用于使用 :set list 显示空白字符时对 空格 tab 换行的映射
+	set listchars=tab:>-,space:⊔,trail:-,eol:¬
 endif
+
+" 在vim的补全时忽略某些文件
+set wildignore+=*.o,*~,*.pyc,*.class
 " 补全列表方式 和循环方式
 set wildmode=full
 " 补全提示增强
@@ -122,8 +125,6 @@ set wildmenu
 set showmatch
 set matchtime=3
 
-" 下面一行用于使用 :set list 显示空白字符时对 空格 tab 换行的映射
-set listchars=tab:>-,space:⊔,trail:-,eol:¬
 " set list
 
 if has("gui_running")
