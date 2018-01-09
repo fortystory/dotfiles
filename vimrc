@@ -249,11 +249,8 @@ else
 	" php语法检查
 	autocmd BufWritePost *.php call PHPSyntaxCheck()
 	 
-	" php路径
-	let g:PHP_SYNTAX_CHECK_BIN = '/home/xiuwei/bin/php' 
-	if !exists('g:PHP_SYNTAX_CHECK_BIN')
-		let g:PHP_SYNTAX_CHECK_BIN = 'php'
-	endif
+	" php路径 写到环境变量里 这里就不用些配置了
+	let g:PHP_SYNTAX_CHECK_BIN = 'php'
 	 
 	function! PHPSyntaxCheck()
 		let result = system(g:PHP_SYNTAX_CHECK_BIN.' -l -n '.expand('%'))
