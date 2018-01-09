@@ -132,22 +132,6 @@ if has("gui_running")
 endif
 
 
-" php语法检查
-autocmd BufWritePost *.php call PHPSyntaxCheck()
- 
-" php路径
-let g:PHP_SYNTAX_CHECK_BIN = '/home/xiuwei/bin/php' 
-if !exists('g:PHP_SYNTAX_CHECK_BIN')
-    let g:PHP_SYNTAX_CHECK_BIN = 'php'
-endif
- 
-function! PHPSyntaxCheck()
-    let result = system(g:PHP_SYNTAX_CHECK_BIN.' -l -n '.expand('%'))
-    if (stridx(result, 'No syntax errors detected') == -1)
-        echohl WarningMsg | echo result | echohl None
-    endif
-endfunction
-
 " html css文件生效
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
@@ -260,4 +244,20 @@ if ( version >= 800 )
 	let g:ale_sign_warning = '-'
 	let g:ale_lint_on_text_changed = 'never' " 这条和下条是让ale在保存文件是校验语法,若无这两句会在编辑时校验,比较烦
 	let g:ale_lint_on_enter = 0
+else
+	" php语法检查
+	autocmd BufWritePost *.php call PHPSyntaxCheck()
+	 
+	" php路径
+	let g:PHP_SYNTAX_CHECK_BIN = '/home/xiuwei/bin/php' 
+	if !exists('g:PHP_SYNTAX_CHECK_BIN')
+		let g:PHP_SYNTAX_CHECK_BIN = 'php'
+	endif
+	 
+	function! PHPSyntaxCheck()
+		let result = system(g:PHP_SYNTAX_CHECK_BIN.' -l -n '.expand('%'))
+		if (stridx(result, 'No syntax errors detected') == -1)
+			echohl WarningMsg | echo result | echohl None
+		endif
+	endfunction
 endif
