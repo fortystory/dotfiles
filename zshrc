@@ -110,6 +110,8 @@ if [ -f "$HOME/.my-alias.sh" ];then
 else
 	echo "提示:没有'.my-alias.sh文件'"
 fi
+eval $(thefuck --alias FUCK)
+eval $(thefuck --alias)
 if [[ -e /dev/lxss ]] {
 	#创建硬链接
 	#ln -s /mnt/c/Users/forty/OneDrive/ ~/onedrive
@@ -126,6 +128,15 @@ if [[ -e /dev/lxss ]] {
 	alias ns='cmdtool wstartex ~/onedrive/script/ahk/media/ns.ahk'
 	alias prevsong='cmdtool wstartex ~/onedrive/script/ahk/media/ps.ahk'
 	alias pp='cmdtool wstartex ~/onedrive/script/ahk/media/pp.ahk'
+	#alias sn='cmdtool wstartex /mnt/c/tools/snipaste/Snipaste.exe snip' #Snipaste别名
+	#alias snip='cmdtool wstartex /mnt/c/tools/snipaste/Snipaste.exe'
 }
 #显示日历
 ccal -u 2> /dev/null
+#自定义函数
+#g++编译.cpp文件 参数为cpp文件名
+function cg()
+{
+	g++ $1 -o ${1%.*}
+}
+export DISPLAY=:0.0
