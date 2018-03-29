@@ -96,12 +96,12 @@ export LANG=zh_CN.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias -s php=vim
-alias -s c=vim
-alias -s h=vim
-alias -s sh=vim
-alias -s cpp=vim
-alias -s html=vim
+#alias -s php=vim
+#alias -s c=vim
+#alias -s h=vim
+#alias -s sh=vim
+#alias -s cpp=vim
+#alias -s html=vim
 alias vimrc="vim ~/.vimrc"
 alias ww="echo `whoami`@`hostname`\(`hostname -i`\):`pwd`"
 
@@ -137,6 +137,8 @@ ccal -u 2> /dev/null
 #g++编译.cpp文件 参数为cpp文件名
 function cg()
 {
-	g++ $1 -o ${1%.*}
+	g++ $1 -o ${1%.*} -std=c++0x
 }
+
+#用于显示gui窗口
 export DISPLAY=:0.0
