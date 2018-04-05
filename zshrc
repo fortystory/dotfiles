@@ -1,7 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export GOPATH=$HOME/gocode
-export PATH=$HOME/bin:$PATH:$GOPATH/bin
+export COMPOSER=$HOME/.composer/vendor
+export PATH=$HOME/bin:$PATH:$GOPATH/bin:$COMPOSER/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh

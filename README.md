@@ -79,3 +79,12 @@ sudo apt install vim
 ## 修改配置
 
 修改`.zshrc`中`cmdtool`等别名.
+
+## 修改默认创建文件,文件夹权限 
+```
+sudo vim /etc/porfile 
+```
+添加 
+```
+umask 022
+```
