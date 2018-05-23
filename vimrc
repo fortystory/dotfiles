@@ -89,6 +89,7 @@ set novisualbell
 syntax on
 set hls   "搜索时高亮显示被找到的文本
 set is    "搜索时在未完全输入完毕要检索的文本时就开始检索
+set ic  "搜索時不區分大小寫
 
 "打开下面配置 powerline会显示不正确
 "set ambiwidth=double  "防止特殊符号无法正常显示

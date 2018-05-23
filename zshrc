@@ -105,6 +105,7 @@ export LANG=zh_CN.UTF-8
 #alias -s html=vim
 alias vimrc="vim ~/.vimrc"
 alias ww="echo `whoami`@`hostname`\(`hostname -i`\):`pwd`"
+alias now="echo `date +\%y-\%m-\%d\ \%H:\%M:\%S`"
 
 if [ -f "$HOME/.my-alias.sh" ];then
 	source $HOME/.my-alias.sh
@@ -143,3 +144,4 @@ function cg()
 
 #用于显示gui窗口
 export DISPLAY=:0.0
+umask 022
