@@ -10,7 +10,11 @@ PWD=`pwd`
 #https://github.com/tankywoo/dotfiles/blob/master/setup.sh
 #1
 #1.1 
+if [ ! -d $HOME/.back ];then
 mkdir $HOME/.back
+else
+	echo ".back 已经存在"
+fi
 echo "这个目录存放的是替换文件的备份,无用可删除" > $HOME/.back/readme.md
 
 if [ -f "$HOME/.vimrc" ];then
@@ -32,6 +36,7 @@ fi
 if [ -f "$HOME/.tmux.conf" ];then
 	mv $HOME/.gitconfig $HOME/.back/.gitconfig
 fi
+
 ln -s $PWD/vimrc $HOME/.vimrc
 ln -s $PWD/vim/ $HOME/.vim
 ln -s $PWD/zshrc $HOME/.zshrc
