@@ -1,4 +1,5 @@
 scriptencoding utf-8
+set encoding=utf-8
 set nocp "让 VIM 工作在不兼容模式下
 set rtp+=~/.vim/bundle/Vundle.vim
 " set rtp+=/usr/local/lib/python3.5/dist-packages/powerline/bindings/vim/
