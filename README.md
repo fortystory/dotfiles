@@ -37,7 +37,7 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 
 克隆我的dotfile
 ```
-git colone https://github.com/fortystory/dotfiles
+git clone https://github.com/fortystory/dotfiles
 ```
 
 执行
@@ -53,6 +53,13 @@ git clone https://github.com/powerline/fonts.git --depth=1
 ```
 
 在windows进入`fonts`目录,执行`install.ps1`文件.
+wsl中下载执行`install.sh`
+
+### 安装python
+```./configure  --prefix=${HOME} --enable-shared --enable-loadable-sqlite-extensions ```
+
+``` pip install powerline-status ```
+找到安装位置,修改tmux.conf中对应的配置
 
 ## 配置wsl-terminal (2)
 
