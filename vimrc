@@ -235,7 +235,7 @@ nnoremap <leader>x :call Xml_r()<CR>
 nnoremap <leader>r :call Rungdb()<CR>
 func! Rungdb()
     exec "w"
-    exec "!g++ % -g -o -Wall %<"
+    exec "!g++ % -g -o -std=c++11 -Wall %<"
 	exec "!gdb ./%<"
 endfunc
 

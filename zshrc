@@ -140,7 +140,7 @@ ccal -u 2> /dev/null
 #g++编译.cpp文件 参数为cpp文件名
 function cg()
 {
-	g++ $1 -o ${1%.*} -std=c++0x
+	g++ $1 -o ${1%.*} -std=c++11
 }
 
 #用于显示gui窗口
