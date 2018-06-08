@@ -15,6 +15,8 @@ GroupAdd, SH, ahk_exe mintty.exe
 GroupAdd, MINTTY, ahk_exe mintty.exe
 GroupAdd, BROWSER, ahk_exe firefox.exe
 GroupAdd, BROWSER, ahk_class MozillaWindowClass
+GroupAdd, UWP, ahk_class ApplicationFrameWindow
+GroupAdd, UWP, ahk_exe ApplicationFrameHost.exe
 return
 
 ::va::
@@ -224,4 +226,10 @@ return
 ;; qq的快捷键  需要求设置
 #q::
 Send, !^+{F2}
+return
+
+;;这条不起作用
+#IfWinActive,ahk_group UWP
+{XButton1}::
+	send #{BackSpace}
 return

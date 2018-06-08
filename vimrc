@@ -18,6 +18,7 @@ Plugin 'tomasr/molokai'
 "Plugin 'junegunn/seoul256.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'sjl/gundo.vim'
+Plugin 'xuhdev/SingleCompile' "编译 执行
 Plugin 'MaryHal/AceJump.vim'
 Plugin 'itchyny/calendar.vim'
 if ( version >= 800 )
@@ -232,12 +233,13 @@ endfunction
 nnoremap <leader>x :call Xml_r()<CR>
 
 "C,C++的调试
-nnoremap <leader>r :call Rungdb()<CR>
-func! Rungdb()
-    exec "w"
-    exec "!g++ % -g -o -std=c++11 -Wall %<"
-	exec "!gdb ./%<"
-endfunc
+nnoremap <leader>r :SCCompileRun<CR>
+"nnoremap <leader>r :call Rungdb()<CR>
+"func! Rungdb()
+"   exec "w"
+"   exec "!g++ % -g -o -std=c++11 -wall %<"
+"	exec "!gdb ./%<"
+"endfunc
 
 if ( version >= 800 )
 	" ale配置 语法校验
