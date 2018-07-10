@@ -1,8 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export GOPATH=$HOME/gocode
+#export GOPATH=$HOME/gocode
 export COMPOSER=$HOME/.composer/vendor
-export PATH=$HOME/bin:$PATH:$GOPATH/bin:$COMPOSER/bin
+export PATH=$HOME/bin:$PATH:$COMPOSER/bin
+#export PATH=$HOME/bin:$PATH:$GOPATH/bin:$COMPOSER/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -114,8 +115,6 @@ if [ -f "$HOME/.my-alias.sh" ];then
 else
 	echo "提示:没有'.my-alias.sh文件'"
 fi
-eval $(thefuck --alias FUCK)
-eval $(thefuck --alias)
 if [[ -e /dev/lxss ]] {
 	#创建硬链接
 	#ln -s /mnt/c/Users/forty/OneDrive/ ~/onedrive
@@ -141,7 +140,7 @@ ccal -u 2> /dev/null
 #g++编译.cpp文件 参数为cpp文件名
 function cg()
 {
-	g++ $1 -o ${1%.*} -std=c++0x
+	g++ $1 -o ${1%.*} -std=c++11
 }
 
 #用于显示gui窗口

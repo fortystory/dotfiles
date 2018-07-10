@@ -1,4 +1,5 @@
 scriptencoding utf-8
+set encoding=utf-8
 set nocp "让 VIM 工作在不兼容模式下
 set rtp+=~/.vim/bundle/Vundle.vim
 " set rtp+=/usr/local/lib/python3.5/dist-packages/powerline/bindings/vim/
@@ -17,6 +18,7 @@ Plugin 'tomasr/molokai'
 "Plugin 'junegunn/seoul256.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'sjl/gundo.vim'
+Plugin 'xuhdev/SingleCompile' "编译 执行
 Plugin 'MaryHal/AceJump.vim'
 Plugin 'itchyny/calendar.vim'
 Plugin 'junegunn/fzf'
@@ -233,6 +235,13 @@ func! Rungdb()
     exec "!g++ % -g -o -Wall %<"
 	exec "!gdb ./%<"
 endfunc
+nnoremap <leader>r :SCCompileRun<CR>
+"nnoremap <leader>r :call Rungdb()<CR>
+"func! Rungdb()
+"   exec "w"
+"   exec "!g++ % -g -o -std=c++11 -wall %<"
+"	exec "!gdb ./%<"
+"endfunc
 
 nnoremap <silent> <Leader>f :Files<CR> " fzf 查找当前文件夹下的文件
 nnoremap <silent> <Leader>b :Buffers<CR> " fzf 查找Buffers 中的某个buffer  

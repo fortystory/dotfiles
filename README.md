@@ -37,7 +37,7 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 
 克隆我的dotfile
 ```
-git colone https://github.com/fortystory/dotfiles
+git clone https://github.com/fortystory/dotfiles
 ```
 
 执行
@@ -53,6 +53,24 @@ git clone https://github.com/powerline/fonts.git --depth=1
 ```
 
 在windows进入`fonts`目录,执行`install.ps1`文件.
+wsl中下载执行`install.sh`
+
+### 安装python
+```./configure  --prefix=${HOME} --enable-shared --enable-loadable-sqlite-extensions ```
+
+或者
+```
+#安装pip
+#在https://pypi.org/project/pip/#files下载
+wget https://files.pythonhosted.org/packages/ae/e8/2340d46ecadb1692a1e455f13f75e596d4eab3d11a57446f08259dee8f02/pip-10.0.1.tar.gz
+tar -xf pip-10.0.1.tar.gz
+cd pip-10.0.1
+#ImportError: No module named 'setuptools' 用下面这句
+sudo apt-get install python3-setuptools
+sudo python3 setup.py install
+sudo pip install powerline-status 
+```
+找到安装位置,修改tmux.conf中对应的配置
 
 ## 配置wsl-terminal (2)
 
