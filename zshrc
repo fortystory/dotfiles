@@ -12,8 +12,8 @@ export ZSH=$HOME/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="powerline"
 ZSH_THEME="robbyrussell"
-#修改 /home/xiuwei/.oh-my-zsh/themes/robbyrussell.zsh-theme
-#local ret_status="%(?:%{$fg_bold[black]%}$HOST%{$fg_bold[green]%} ➜ :%{$fg_bold[black]%}$HOST%{$fg_bold[red]%} ➜ )"
+#修改 ~/.oh-my-zsh/themes/robbyrussell.zsh-theme
+#local ret_status="%(?:%{$fg_bold[black]%}$HOST %{$fg_bold[green]%}➜:%{$fg_bold[black]%}$HOST %{$fg_bold[red]%}➜)"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -147,3 +147,5 @@ function cg()
 #用于显示gui窗口
 export DISPLAY=:0.0
 umask 022
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
