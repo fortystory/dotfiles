@@ -21,7 +21,7 @@ Plugin 'sjl/gundo.vim'
 Plugin 'xuhdev/SingleCompile' "编译 执行
 Plugin 'MaryHal/AceJump.vim'
 Plugin 'itchyny/calendar.vim'
-Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf' "fzf"
 Plugin 'junegunn/fzf.vim'
 if ( version >= 800 )
 	Plugin 'w0rp/ale' " 语法检查
