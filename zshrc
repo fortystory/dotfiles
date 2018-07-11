@@ -68,7 +68,7 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
-export LANG=zh_CN.UTF-8
+export LANG="zh_CN.UTF-8"
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -146,3 +146,5 @@ function cg()
 #用于显示gui窗口
 export DISPLAY=:0.0
 umask 022
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
