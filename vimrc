@@ -229,13 +229,7 @@ endfunction
 nnoremap <leader>x :call Xml_r()<CR> " 格式化xml
 
 "C,C++的调试
-nnoremap <leader>r :call Rungdb()<CR> " 编译运行单个C++文件
-func! Rungdb()
-    exec "w"
-    exec "!g++ % -g -o -Wall %<"
-	exec "!gdb ./%<"
-endfunc
-nnoremap <leader>r :SCCompileRun<CR>
+nnoremap <leader>r :SCCompileRun<CR> " 编译运行单个C++文件
 "nnoremap <leader>r :call Rungdb()<CR>
 "func! Rungdb()
 "   exec "w"
