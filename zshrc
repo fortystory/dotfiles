@@ -80,6 +80,26 @@ export LANG="zh_CN.UTF-8"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+
+# powerline_conf_path
+powerline_conf=(
+/usr/local/lib/python3.5/dist-packages/powerline/bindings/tmux/powerline.conf
+${HOME}/lib/python3.6/site-packages/powerline/bindings/tmux/powerline.conf
+)
+
+#powerline_conf=(
+#[0]=/usr/local/lib/python3.5/dist-packages/powerline/bindings/tmux/powerline.conf
+#[1]=${HOME}/lib/python3.6/site-packages/powerline/bindings/tmux/powerline.conf
+#)
+#zsh不支持这种方式定义数组
+
+#echo ${#powerline_conf[@]};
+for conf in ${powerline_conf[@]}; do
+	if [ -e $conf ];then
+		export POWERLINE_CONF_PATH=$conf
+		break
+	fi
+done
 # open-terminal
 [[ -z "$TMUX" && -n "$USE_TMUX" ]] && {
     [[ -n "$ATTACH_ONLY" ]] && { tmux a 2>/dev/null || { cd && exec tmux }
