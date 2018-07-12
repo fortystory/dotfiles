@@ -1,8 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export GOPATH=$HOME/gocode
-export COMPOSER=$HOME/.composer/vendor
-export PATH=$HOME/bin:$PATH:$GOPATH/bin:$COMPOSER/bin
+#export GOPATH=$HOME/gocode
+export COMPOSER=$HOME/.composer
+#export PATH=$HOME/bin:$PATH:$GOPATH/bin:$COMPOSER/bin
+export PATH=$HOME/bin:$HOME/sbin:$HOME/.composer:$HOME/.composer/vendor:$HOME/.composer/vendor/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -13,7 +14,7 @@ export ZSH=$HOME/.oh-my-zsh
 # ZSH_THEME="powerline"
 ZSH_THEME="robbyrussell"
 #修改 /home/xiuwei/.oh-my-zsh/themes/robbyrussell.zsh-theme
-#local ret_status="%(?:%{$fg_bold[black]%}$HOST%{$fg_bold[green]%} ➜ :%{$fg_bold[black]%}$HOST%{$fg_bold[red]%} ➜ )"
+#local ret_status="%(?:%{$fg_bold[black]%}$HOST%{$fg_bold[green]%} ➜:%{$fg_bold[black]%}$HOST%{$fg_bold[red]%} ➜)"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -114,8 +115,8 @@ if [ -f "$HOME/.my-alias.sh" ];then
 else
 	echo "提示:没有'.my-alias.sh文件'"
 fi
-eval $(thefuck --alias FUCK)
-eval $(thefuck --alias)
+#eval $(thefuck --alias FUCK)
+#eval $(thefuck --alias)
 if [[ -e /dev/lxss ]] {
 	#创建硬链接
 	#ln -s /mnt/c/Users/forty/OneDrive/ ~/onedrive
@@ -136,7 +137,7 @@ if [[ -e /dev/lxss ]] {
 	#alias snip='cmdtool wstartex /mnt/c/tools/snipaste/Snipaste.exe'
 }
 #显示日历
-ccal -u 2> /dev/null
+#ccal -u 2> /dev/null
 #自定义函数
 #g++编译.cpp文件 参数为cpp文件名
 function cg()
@@ -145,5 +146,7 @@ function cg()
 }
 
 #用于显示gui窗口
-export DISPLAY=:0.0
-umask 022
+#export DISPLAY=:0.0
+#umask 022
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
