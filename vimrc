@@ -1,4 +1,5 @@
 scriptencoding utf-8
+set encoding=utf-8
 set nocp "让 VIM 工作在不兼容模式下
 set rtp+=~/.vim/bundle/Vundle.vim
 " set rtp+=/usr/local/lib/python3.5/dist-packages/powerline/bindings/vim/
@@ -17,8 +18,11 @@ Plugin 'tomasr/molokai'
 "Plugin 'junegunn/seoul256.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'sjl/gundo.vim'
+Plugin 'xuhdev/SingleCompile' "编译 执行
 Plugin 'MaryHal/AceJump.vim'
 Plugin 'itchyny/calendar.vim'
+Plugin 'junegunn/fzf' "fzf"
+Plugin 'junegunn/fzf.vim'
 if ( version >= 800 )
 	Plugin 'w0rp/ale' " 语法检查
 endif
@@ -33,19 +37,16 @@ filetype plugin indent on    " required
 let mapleader = " "
 " nnoremap <leader>b :TagbarToggle<CR> " tagbar
 " nnoremap <leader>b :Tlist<CR> 
-nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>t :NERDTreeToggle<CR> " NERDTreeToggle 目录树
 
-" 下一个todo
-nnoremap <leader>n /todo<CR>:nohl<CR>
+nnoremap <leader>n /todo<CR>:nohl<CR> " 下一个todo
 
-"php添加注释
-nnoremap <leader>p :call PhpDocSingle()<CR> 
+nnoremap <leader>p :call PhpDocSingle()<CR> " php添加注释
 
 " filetype plugin on
 " autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
-" undo列表 
-nnoremap <leader>u :GundoToggle<CR>
+nnoremap <leader>u :GundoToggle<CR> " undo列表 
 
 " 编辑模式下的快捷键
 " inoremap <C-Right> <ESC>ea
@@ -54,16 +55,14 @@ nnoremap <leader>u :GundoToggle<CR>
 "设置切换Buffer快捷键"
 nnoremap <silent>[b :bp<CR>
 nnoremap <silent>]b :bn<CR>
-nnoremap <silent>[a :next<CR>
-nnoremap <silent>]a :prev<CR>
+nnoremap <silent>[a :next<CR> " 下个buffer
+nnoremap <silent>]a :prev<CR> " 上个buffer
 
-"编辑.vimrc文件
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-"重载.vimrc
-nnoremap <leader>sv :source $MYVIMRC<cr>
-"给一个单词添加双引号
-nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
-nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
+nnoremap <leader>ev :vsplit $MYVIMRC<cr> " 编辑.vimrc文件
+nnoremap <leader>sv :source $MYVIMRC<cr> " 重载.vimrc
+nnoremap <leader>" viw<esc>a"<esc>hbi"<esc> " 给一个单词添加双引号
+nnoremap <leader>' viw<esc>a'<esc>hbi'<esc> " 给一个单词添加单引号
+
 
 " 中文帮助
 set helplang=cn
@@ -184,8 +183,7 @@ let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
 let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
 let g:CtrlSpaceSaveWorkspaceOnExit = 1
 
-" acejump
-nnoremap <Leader><Leader> :call AceJumpChar("")<CR>
+nnoremap <Leader><Leader> :call AceJumpChar("")<CR> " acejump
 
 " php注释
 " Default values
@@ -197,28 +195,28 @@ let g:pdv_cfg_Copyright = "Copyright ''"
 let g:pdv_cfg_License = "PHP Version 7.0 {@link http://www.php.net/license/7_0.txt}"
 
 "calendar 配置
-nnoremap <leader>c :Calendar<CR>
-nnoremap <leader>cc :Calendar -view=clock<CR>
-nnoremap <leader>cw :Calendar -view=week<CR>
+nnoremap <leader>c :Calendar<CR> " calendar月历
+nnoremap <leader>cc :Calendar -view=clock<CR> " calendar 时间
+nnoremap <leader>cw :Calendar -view=week<CR>  " calendar 周
 let g:calendar_first_day = 'sunday'
 let g:calendar_time_zone = '8000'
 
 " 自定义快捷键
-nnoremap <leader>sw demmwvep`mPb "switch word 
+nnoremap <leader>sw demmwvep`mPb " 交换两个单词的位置 例:foo goo 光标在f出时使用 goo foo
 " 选择buffer 
-nnoremap <leader>1 :b1<CR>
-nnoremap <leader>2 :b2<CR>
-nnoremap <leader>3 :b3<CR>
-nnoremap <leader>4 :b4<CR>
-nnoremap <leader>5 :b5<CR>
-nnoremap <leader>6 :b6<CR>
-nnoremap <leader>7 :b7<CR>
-nnoremap <leader>8 :b8<CR>
-nnoremap <leader>9 :b9<CR>
-nnoremap <leader>0 :b10<CR>
-nnoremap <leader>l :buffers !<CR>
+nnoremap <leader>1 :b1<CR> " 切换至buffer1
+nnoremap <leader>2 :b2<CR> " 切换至buffer2
+nnoremap <leader>3 :b3<CR> " 切换至buffer3
+nnoremap <leader>4 :b4<CR> " 切换至buffer4
+nnoremap <leader>5 :b5<CR> " 切换至buffer5
+nnoremap <leader>6 :b6<CR> " 切换至buffer6
+nnoremap <leader>7 :b7<CR> " 切换至buffer7
+nnoremap <leader>8 :b8<CR> " 切换至buffer8
+nnoremap <leader>9 :b9<CR> " 切换至buffer9
+nnoremap <leader>0 :b10<CR> " 切换至buffer10
+nnoremap <leader>l :buffers !<CR> " 查看buffers
 " nnoremap <leader><tab> :e #<CR> " CTRL<CR> 为默认 不重新映射了
-nnoremap <leader><tab> :bn<CR> 为默认 不重新映射了
+" nnoremap <leader><tab> :bn<CR> " 为默认 不重新映射了
 " 使用自动命令 对不同的文件的注释
 " autocmd FileType php nnoremap <buffer> <leader>/ I#<down><esc>
 
@@ -228,20 +226,25 @@ func! Xml_r()
    :%s/></>\r</g "把><替换成>回车<
    :normal gg=G
 endfunction
-nnoremap <leader>x :call Xml_r()<CR>
+nnoremap <leader>x :call Xml_r()<CR> " 格式化xml
 
 "C,C++的调试
-nnoremap <leader>r :call Rungdb()<CR>
-func! Rungdb()
-    exec "w"
-    exec "!g++ % -g -o -Wall %<"
-	exec "!gdb ./%<"
-endfunc
+nnoremap <leader>r :SCCompileRun<CR> " 编译运行单个C++文件
+"nnoremap <leader>r :call Rungdb()<CR>
+"func! Rungdb()
+"   exec "w"
+"   exec "!g++ % -g -o -std=c++11 -wall %<"
+"	exec "!gdb ./%<"
+"endfunc
+
+nnoremap <silent> <Leader>f :Files<CR> " fzf 查找当前文件夹下的文件
+nnoremap <silent> <Leader>b :Buffers<CR> " fzf 查找Buffers 中的某个buffer  
+nnoremap <silent> <Leader>/ :Lines<CR> " fzf 查找当前Buffers中的某一行
 
 if ( version >= 800 )
 	" ale配置 语法校验
-	nnoremap <silent> <leader>k <Plug>(ale_previous_wrap)
-	nnoremap <silent> <leader>j <Plug>(ale_next_wrap)
+	nnoremap <silent> <leader>k <Plug>(ale_previous_wrap) " 貌似是上一个语法错误
+	nnoremap <silent> <leader>j <Plug>(ale_next_wrap) " 貌似是下一个语法错误
 	let g:ale_sign_error = '>'
 	let g:ale_sign_warning = '-'
 	let g:ale_lint_on_text_changed = 'never' " 这条和下条是让ale在保存文件是校验语法,若无这两句会在编辑时校验,比较烦

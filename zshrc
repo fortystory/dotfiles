@@ -13,8 +13,8 @@ export ZSH=$HOME/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="powerline"
 ZSH_THEME="robbyrussell"
-#修改 /home/xiuwei/.oh-my-zsh/themes/robbyrussell.zsh-theme
-#local ret_status="%(?:%{$fg_bold[black]%}$HOST%{$fg_bold[green]%} ➜:%{$fg_bold[black]%}$HOST%{$fg_bold[red]%} ➜)"
+#修改 ~/.oh-my-zsh/themes/robbyrussell.zsh-theme
+#local ret_status="%(?:%{$fg_bold[black]%}$HOST %{$fg_bold[green]%}➜:%{$fg_bold[black]%}$HOST %{$fg_bold[red]%}➜)"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -68,7 +68,7 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
-export LANG=zh_CN.UTF-8
+export LANG="zh_CN.UTF-8"
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -80,6 +80,26 @@ export LANG=zh_CN.UTF-8
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+
+# powerline_conf_path
+powerline_conf=(
+/usr/local/lib/python3.5/dist-packages/powerline/bindings/tmux/powerline.conf
+${HOME}/lib/python3.6/site-packages/powerline/bindings/tmux/powerline.conf
+)
+
+#powerline_conf=(
+#[0]=/usr/local/lib/python3.5/dist-packages/powerline/bindings/tmux/powerline.conf
+#[1]=${HOME}/lib/python3.6/site-packages/powerline/bindings/tmux/powerline.conf
+#)
+#zsh不支持这种方式定义数组
+
+#echo ${#powerline_conf[@]};
+for conf in ${powerline_conf[@]}; do
+	if [ -e $conf ];then
+		export POWERLINE_CONF_PATH=$conf
+		break
+	fi
+done
 # open-terminal
 [[ -z "$TMUX" && -n "$USE_TMUX" ]] && {
     [[ -n "$ATTACH_ONLY" ]] && { tmux a 2>/dev/null || { cd && exec tmux }
@@ -142,11 +162,11 @@ if [[ -e /dev/lxss ]] {
 #g++编译.cpp文件 参数为cpp文件名
 function cg()
 {
-	g++ $1 -o ${1%.*} -std=c++0x
+	g++ $1 -o ${1%.*} -std=c++11
 }
 
 #用于显示gui窗口
-#export DISPLAY=:0.0
-#umask 022
+export DISPLAY=:0.0
+umask 022
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
