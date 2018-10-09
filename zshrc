@@ -130,10 +130,10 @@ alias vimrc="vim ~/.vimrc"
 alias ww="echo `whoami`@`hostname`\(`hostname -i`\):`pwd`"
 alias now="echo `date +\%y-\%m-\%d\ \%H:\%M:\%S`"
 
-if [ -f "$HOME/.my-alias.sh" ];then
-	source $HOME/.my-alias.sh
+if [ -f "$HOME/.myalias.sh" ];then
+	source $HOME/.myalias.sh
 else
-	echo "提示:没有'.my-alias.sh文件'"
+	echo "提示:没有'.myalias.sh文件'"
 fi
 #eval $(thefuck --alias FUCK)
 #eval $(thefuck --alias)
@@ -166,7 +166,8 @@ function cg()
 }
 
 #用于显示gui窗口
-export DISPLAY=:0.0
+export DISPLAY=127.0.0.1:0.0
+
 umask 022
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
