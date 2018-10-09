@@ -14,3 +14,5 @@
 	dt = difftool
 [mergetool]
 	prompt = false
+[color]
+	ui = true
