@@ -18,12 +18,14 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tomasr/molokai'
 "Plugin 'junegunn/seoul256.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'sjl/gundo.vim'
 Plugin 'xuhdev/SingleCompile' "编译 执行
 Plugin 'MaryHal/AceJump.vim'
 Plugin 'itchyny/calendar.vim'
 Plugin 'junegunn/fzf' "fzf"
 Plugin 'junegunn/fzf.vim'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'junegunn/limelight.vim'
+Plugin 'mbbill/undotree'
 if ( version >= 800 )
 	Plugin 'w0rp/ale' " 语法检查
 endif
@@ -47,7 +49,7 @@ nnoremap <leader>p :call PhpDocSingle()<CR> " php添加注释
 " filetype plugin on
 " autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
-nnoremap <leader>u :GundoToggle<CR> " undo列表 
+nnoremap <leader>u :UndotreeToggle<CR> " undo列表 
 
 " 编辑模式下的快捷键
 " inoremap <C-Right> <ESC>ea
@@ -90,6 +92,7 @@ syntax on
 set hls   "搜索时高亮显示被找到的文本
 set is    "搜索时在未完全输入完毕要检索的文本时就开始检索
 set ic  "搜索時不區分大小寫
+set modifiable
 
 " 当光标一段时间保持不动了，就禁用高亮
 autocmd cursorhold * set nohlsearch
@@ -279,4 +282,10 @@ else
 			echohl WarningMsg | echo result | echohl None
 		endif
 	endfunction
+endif
+
+" undotree
+if has("persistent_undo")
+    set undodir=~/.undodir/
+    set undofile
 endif
