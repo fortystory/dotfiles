@@ -128,7 +128,7 @@ done
 #alias -s html=vim
 alias vimrc="vim ~/.vimrc"
 alias ww="echo `whoami`@`hostname`\(`hostname -i`\):`pwd`"
-alias now="echo `date +\%y-\%m-\%d\ \%H:\%M:\%S`"
+alias now="date +%F' '%T"
 
 if [ -f "$HOME/.myalias.sh" ];then
 	source $HOME/.myalias.sh
