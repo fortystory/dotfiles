@@ -1,9 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 #export GOPATH=$HOME/gocode
-export COMPOSER=$HOME/.composer/vendor
-export PATH=$HOME/bin:$PATH:$COMPOSER/bin
+export COMPOSER=$HOME/.composer
 #export PATH=$HOME/bin:$PATH:$GOPATH/bin:$COMPOSER/bin
+export PATH=$HOME/bin:$HOME/sbin:$HOME/.composer:$HOME/.composer/vendor:$HOME/.composer/vendor/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -128,13 +128,15 @@ done
 #alias -s html=vim
 alias vimrc="vim ~/.vimrc"
 alias ww="echo `whoami`@`hostname`\(`hostname -i`\):`pwd`"
-alias now="date +\%y-\%m-\%d\ \%H:\%M:\%S"
+alias now="date +%F' '%T"
 
 if [ -f "$HOME/.myalias.sh" ];then
 	source $HOME/.myalias.sh
 else
 	echo "提示:没有'.myalias.sh文件'"
 fi
+#eval $(thefuck --alias FUCK)
+#eval $(thefuck --alias)
 if [[ -e /dev/lxss ]] {
 	#创建硬链接
 	#ln -s /mnt/c/Users/forty/OneDrive/ ~/onedrive
@@ -155,7 +157,7 @@ if [[ -e /dev/lxss ]] {
 	#alias snip='cmdtool wstartex /mnt/c/tools/snipaste/Snipaste.exe'
 }
 #显示日历
-ccal -u 2> /dev/null
+#ccal -u 2> /dev/null
 #自定义函数
 #g++编译.cpp文件 参数为cpp文件名
 function cg()
@@ -164,7 +166,8 @@ function cg()
 }
 
 #用于显示gui窗口
-export DISPLAY=:0.0
+export DISPLAY=127.0.0.1:0.0
+
 umask 022
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

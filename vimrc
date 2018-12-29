@@ -14,15 +14,19 @@ Plugin 'ervandew/supertab'
 Plugin 'fugalh/desert.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+" Plugin 'bling/vim-bufferline'
 Plugin 'tomasr/molokai'
 "Plugin 'junegunn/seoul256.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'sjl/gundo.vim'
 Plugin 'xuhdev/SingleCompile' "编译 执行
 Plugin 'MaryHal/AceJump.vim'
 Plugin 'itchyny/calendar.vim'
 Plugin 'junegunn/fzf' "fzf"
 Plugin 'junegunn/fzf.vim'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'junegunn/limelight.vim'
+Plugin 'mbbill/undotree'
+Plugin 'junegunn/vim-easy-align'
 if ( version >= 800 )
 	Plugin 'w0rp/ale' " 语法检查
 endif
@@ -38,6 +42,9 @@ let mapleader = " "
 " nnoremap <leader>b :TagbarToggle<CR> " tagbar
 " nnoremap <leader>b :Tlist<CR> 
 nnoremap <leader>t :NERDTreeToggle<CR> " NERDTreeToggle 目录树
+" 除了 NERDTree 外只有一个 buffer时候 :q 会连 NERDTree 一起关闭
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 
 nnoremap <leader>n /todo<CR>:nohl<CR> " 下一个todo
 
@@ -46,7 +53,7 @@ nnoremap <leader>p :call PhpDocSingle()<CR> " php添加注释
 " filetype plugin on
 " autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
-nnoremap <leader>u :GundoToggle<CR> " undo列表 
+nnoremap <leader>u :UndotreeToggle<CR> " undo列表 
 
 " 编辑模式下的快捷键
 " inoremap <C-Right> <ESC>ea
@@ -64,6 +71,7 @@ nnoremap <leader>" viw<esc>a"<esc>hbi"<esc> " 给一个单词添加双引号
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc> " 给一个单词添加单引号
 
 
+set mouse=ar
 " 中文帮助
 set helplang=cn
 
@@ -80,7 +88,7 @@ set cindent
 set tabstop=4
 set fileignorecase "使用:e 的时候忽略文件名大小写 下面的 ignorecase smartcase tagcase 也是忽略大小写的配
 set ignorecase 
-set smartcase
+set smartcase "查找中如果有一个大写字母，则切换到大小写敏感查找
 set relativenumber
 set sm 
 set fillchars=vert:\ ,stl:\ ,stlnc:\
@@ -89,6 +97,17 @@ syntax on
 set hls   "搜索时高亮显示被找到的文本
 set is    "搜索时在未完全输入完毕要检索的文本时就开始检索
 set ic  "搜索時不區分大小寫
+set modifiable
+
+" 当光标一段时间保持不动了，就禁用高亮
+autocmd cursorhold * set nohlsearch
+" 当输入查找命令时，再启用高亮
+noremap n :set hlsearch<cr>n
+noremap N :set hlsearch<cr>N
+noremap / :set hlsearch<cr>/
+noremap ? :set hlsearch<cr>?
+noremap * *:set hlsearch<cr>
+
 
 "打开下面配置 powerline会显示不正确
 "set ambiwidth=double  "防止特殊符号无法正常显示
@@ -135,8 +154,9 @@ endif
 
 " html css文件生效
 let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
+autocmd FileType html,css,php,smarty EmmetInstall
 " emmet 默认热键<C-Y>
+let g:user_emmet_mode='i'
 let g:user_emmet_leader_key="<c-e>"
 
 colorscheme molokai 
@@ -151,11 +171,14 @@ let NERDTreeShowBookmarks=1 "当打开NERDTree窗口时，自动显示Bookmarks
 let g:airline_powerline_fonts = 1
 "打开tabline功能
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#show_tabs = 0
+let g:airline#extensions#tabline#switch_buffers = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
 
 " 关闭状态显示空白符号计数,这个对我用处不大"
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#whitespace#symbol = '!'
+" let g:airline#extensions#whitespace#enabled = 0
+" let g:airline#extensions#whitespace#symbol = '!'
 
 let g:airline_theme='deus'
 
@@ -184,6 +207,8 @@ let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
 let g:CtrlSpaceSaveWorkspaceOnExit = 1
 
 nnoremap <Leader><Leader> :call AceJumpChar("")<CR> " acejump
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
 
 " php注释
 " Default values
@@ -204,17 +229,23 @@ let g:calendar_time_zone = '8000'
 " 自定义快捷键
 nnoremap <leader>sw demmwvep`mPb " 交换两个单词的位置 例:foo goo 光标在f出时使用 goo foo
 " 选择buffer 
-nnoremap <leader>1 :b1<CR> " 切换至buffer1
-nnoremap <leader>2 :b2<CR> " 切换至buffer2
-nnoremap <leader>3 :b3<CR> " 切换至buffer3
-nnoremap <leader>4 :b4<CR> " 切换至buffer4
-nnoremap <leader>5 :b5<CR> " 切换至buffer5
-nnoremap <leader>6 :b6<CR> " 切换至buffer6
-nnoremap <leader>7 :b7<CR> " 切换至buffer7
-nnoremap <leader>8 :b8<CR> " 切换至buffer8
-nnoremap <leader>9 :b9<CR> " 切换至buffer9
-nnoremap <leader>0 :b10<CR> " 切换至buffer10
-nnoremap <leader>l :buffers !<CR> " 查看buffers
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>0 <Plug>AirlineSelectTab10
+nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <leader>= <Plug>AirlineSelectNextTab
+" 查看buffers
+nnoremap <leader>l :Buffers<CR> 
+
+" 寄存器
+nnoremap <leader>d :di<CR>
 " nnoremap <leader><tab> :e #<CR> " CTRL<CR> 为默认 不重新映射了
 " nnoremap <leader><tab> :bn<CR> " 为默认 不重新映射了
 " 使用自动命令 对不同的文件的注释
@@ -262,4 +293,10 @@ else
 			echohl WarningMsg | echo result | echohl None
 		endif
 	endfunction
+endif
+
+" undotree
+if has("persistent_undo")
+    set undodir=~/.undodir/
+    set undofile
 endif
