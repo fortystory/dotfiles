@@ -128,12 +128,12 @@ done
 #alias -s html=vim
 alias vimrc="vim ~/.vimrc"
 alias ww="echo `whoami`@`hostname`\(`hostname -i`\):`pwd`"
-alias now="echo `date +\%y-\%m-\%d\ \%H:\%M:\%S`"
+alias now="date +\%y-\%m-\%d\ \%H:\%M:\%S"
 
-if [ -f "$HOME/.my-alias.sh" ];then
-	source $HOME/.my-alias.sh
+if [ -f "$HOME/.myalias.sh" ];then
+	source $HOME/.myalias.sh
 else
-	echo "提示:没有'.my-alias.sh文件'"
+	echo "提示:没有'.myalias.sh文件'"
 fi
 if [[ -e /dev/lxss ]] {
 	#创建硬链接
