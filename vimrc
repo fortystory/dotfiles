@@ -26,6 +26,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'junegunn/limelight.vim'
 Plugin 'mbbill/undotree'
+Plugin 'junegunn/vim-easy-align'
 if ( version >= 800 )
 	Plugin 'w0rp/ale' " 语法检查
 endif
@@ -41,6 +42,9 @@ let mapleader = " "
 " nnoremap <leader>b :TagbarToggle<CR> " tagbar
 " nnoremap <leader>b :Tlist<CR> 
 nnoremap <leader>t :NERDTreeToggle<CR> " NERDTreeToggle 目录树
+" 除了 NERDTree 外只有一个 buffer时候 :q 会连 NERDTree 一起关闭
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 
 nnoremap <leader>n /todo<CR>:nohl<CR> " 下一个todo
 
@@ -67,6 +71,7 @@ nnoremap <leader>" viw<esc>a"<esc>hbi"<esc> " 给一个单词添加双引号
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc> " 给一个单词添加单引号
 
 
+set mouse=ar
 " 中文帮助
 set helplang=cn
 
@@ -149,7 +154,7 @@ endif
 
 " html css文件生效
 let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
+autocmd FileType html,css,php,smarty EmmetInstall
 " emmet 默认热键<C-Y>
 let g:user_emmet_mode='i'
 let g:user_emmet_leader_key="<c-e>"
@@ -166,12 +171,14 @@ let NERDTreeShowBookmarks=1 "当打开NERDTree窗口时，自动显示Bookmarks
 let g:airline_powerline_fonts = 1
 "打开tabline功能
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#show_tabs = 0
+let g:airline#extensions#tabline#switch_buffers = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
-" let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " 关闭状态显示空白符号计数,这个对我用处不大"
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#whitespace#symbol = '!'
+" let g:airline#extensions#whitespace#enabled = 0
+" let g:airline#extensions#whitespace#symbol = '!'
 
 let g:airline_theme='deus'
 
@@ -200,6 +207,8 @@ let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
 let g:CtrlSpaceSaveWorkspaceOnExit = 1
 
 nnoremap <Leader><Leader> :call AceJumpChar("")<CR> " acejump
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
 
 " php注释
 " Default values
@@ -230,6 +239,8 @@ nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 nmap <leader>0 <Plug>AirlineSelectTab10
+nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <leader>= <Plug>AirlineSelectNextTab
 " 查看buffers
 nnoremap <leader>l :Buffers<CR> 
 
