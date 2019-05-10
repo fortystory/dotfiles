@@ -130,6 +130,18 @@ alias vimrc="vim ~/.vimrc"
 alias ww="echo `whoami`@`hostname`\(`hostname -i`\):`pwd`"
 alias now="date +%F' '%T"
 
+cd_ll()
+{
+	# 使用‘\’可以调用原始命令
+	\cd $1
+	# ls -l
+	clear
+	pwd
+	ll
+}
+# 设置别名
+alias cd='cd_ll'
+
 if [ -f "$HOME/.myalias.sh" ];then
 	source $HOME/.myalias.sh
 else
