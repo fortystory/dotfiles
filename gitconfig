@@ -1,15 +1,16 @@
 [user]
-	email = forty40@live.cn
-	name = 修伟 
+	email = xiuwe@oneniceapp.com
+	name = xiuwei 
 [core]
 	editor = vim
 	pager = more
 	pager = less
+  excludesfile = ~/.gitignore_global
 [merge]
 	tool = vimdiff
 [alias]
 	l = log --stat
-	st = status
+	st = status -s
 	diff = difftool
 	dt = difftool
 [mergetool]

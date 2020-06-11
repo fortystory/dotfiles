@@ -1,3 +1,4 @@
+" 现在使用spacevim配置文件
 scriptencoding utf-8
 set encoding=utf-8
 set nocp "让 VIM 工作在不兼容模式下
@@ -27,6 +28,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'junegunn/limelight.vim'
 Plugin 'mbbill/undotree'
 Plugin 'junegunn/vim-easy-align'
+Plugin 'ludovicchabant/vim-gutentags'
 if ( version >= 800 )
 	Plugin 'w0rp/ale' " 语法检查
 endif
@@ -79,9 +81,11 @@ set helplang=cn
 set to 
 set tm=500
 
-set nu
+"set nu
+"set relativenumber
 set nowrap
-set background=dark
+"hi Normal ctermbg=NONE
+"set background=dark
 
 set autoindent "根据上一行决定新行的缩进
 set cindent 
@@ -89,7 +93,6 @@ set tabstop=4
 set fileignorecase "使用:e 的时候忽略文件名大小写 下面的 ignorecase smartcase tagcase 也是忽略大小写的配
 set ignorecase 
 set smartcase "查找中如果有一个大写字母，则切换到大小写敏感查找
-set relativenumber
 set sm 
 set fillchars=vert:\ ,stl:\ ,stlnc:\
 set novisualbell
@@ -300,3 +303,21 @@ if has("persistent_undo")
     set undodir=~/.undodir/
     set undofile
 endif
+
+" gutentags搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归 "
+let g:gutentags_project_root = ['.root', '.svn', '.project']
+
+" 所生成的数据文件的名称 "
+let g:gutentags_ctags_tagfile = '.tags'
+
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录 "
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+" 检测 ~/.cache/tags 不存在就新建 "
+if !isdirectory(s:vim_tags)
+	silent! call mkdir(s:vim_tags, 'p')
+endif
+
+" 配置 ctags 的参数 "
+let g:gutentags_ctags_extra_args = ['--fields=+aimS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--languages=php']

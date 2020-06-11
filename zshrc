@@ -1,9 +1,13 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-#export GOPATH=$HOME/gocode
-export COMPOSER=$HOME/.composer
-#export PATH=$HOME/bin:$PATH:$GOPATH/bin:$COMPOSER/bin
-export PATH=$HOME/bin:$HOME/sbin:$HOME/.composer:$HOME/.composer/vendor:$HOME/.composer/vendor/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/dev/go
+export GOBIN=$GOPATH/bin
+export PATH=$GOBIN:$PATH
+export GO111MODULE=on
+export GOPROXY=https://goproxy.cn
+go env -w GOSUMDB="sum.golang.google.cn"
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -58,7 +62,7 @@ HIST_STAMPS="mm-dd-yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+#plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -82,10 +86,10 @@ export LANG="zh_CN.UTF-8"
 
 
 # powerline_conf_path
-powerline_conf=(
-/usr/local/lib/python3.5/dist-packages/powerline/bindings/tmux/powerline.conf
-${HOME}/lib/python3.6/site-packages/powerline/bindings/tmux/powerline.conf
-)
+#powerline_conf=(
+#/usr/local/lib/python3.5/dist-packages/powerline/bindings/tmux/powerline.conf
+#${HOME}/lib/python3.6/site-packages/powerline/bindings/tmux/powerline.conf
+#)
 
 #powerline_conf=(
 #[0]=/usr/local/lib/python3.5/dist-packages/powerline/bindings/tmux/powerline.conf
@@ -101,13 +105,13 @@ for conf in ${powerline_conf[@]}; do
 	fi
 done
 # open-terminal
-[[ -z "$TMUX" && -n "$USE_TMUX" ]] && {
-    [[ -n "$ATTACH_ONLY" ]] && { tmux a 2>/dev/null || { cd && exec tmux }
-		exit
-	}
-	tmux new-window -c "$PWD" 2>/dev/null && exec tmux a
-	exec tmux
-}
+#[[ -z "$TMUX" && -n "$USE_TMUX" ]] && {
+    #[[ -n "$ATTACH_ONLY" ]] && { tmux a 2>/dev/null || { cd && exec tmux }
+		#exit
+	#}
+	#tmux new-window -c "$PWD" 2>/dev/null && exec tmux a 
+	#exec tmux
+#}
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
@@ -165,9 +169,29 @@ function cg()
 	g++ $1 -o ${1%.*} -std=c++11
 }
 
+
+#function cd_ll()
+#{
+  # 使用‘\’可以调用原始命令
+#  \cd $1
+  # ls -l
+#  ll
+#}
+# 设置别名
+#alias cd='cd_ll'
+
 #用于显示gui窗口
-export DISPLAY=127.0.0.1:0.0
+#export DISPLAY=127.0.0.1:0.0
+`cat /etc/resolv.conf | grep nameserver | awk '{print "export DISPLAY="$2":0"}'`
+export LANG=zh_CN.UTF-8
+export LANGUAGE=zh_CN.UTF-8
+export LC_ALL=zh_CN.UTF-8
 
 umask 022
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#if [ $(ps -ax | grep dbus-daemon | wc -l) -eq 1 ]; then
+  #eval `dbus-launch fcitx > /dev/null 2>&1`
+#fi
+#PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
