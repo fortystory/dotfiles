@@ -6,13 +6,21 @@
 	pager = more
 	pager = less
   excludesfile = ~/.gitignore_global
-[merge]
+[diff]
+#tool = meld
 	tool = vimdiff
+[difftool]
+  prompt = false
+  bc = trustExitCode
+[difftool "meld"]
+  cmd=meld "$LOCAL" "$REMOTE" >/dev/null 2>&1
 [alias]
 	l = log --stat
 	st = status -s
 	diff = difftool
 	dt = difftool
+[merge]
+	tool = vimdiff
 [mergetool]
 	prompt = false
 [color]

@@ -9,6 +9,8 @@ export GO111MODULE=on
 export GOPROXY=https://goproxy.cn
 go env -w GOSUMDB="sum.golang.google.cn"
 
+export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src/
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -66,77 +68,13 @@ HIST_STAMPS="mm-dd-yyyy"
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
 export LANG="zh_CN.UTF-8"
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-
-# powerline_conf_path
-#powerline_conf=(
-#/usr/local/lib/python3.5/dist-packages/powerline/bindings/tmux/powerline.conf
-#${HOME}/lib/python3.6/site-packages/powerline/bindings/tmux/powerline.conf
-#)
-
-#powerline_conf=(
-#[0]=/usr/local/lib/python3.5/dist-packages/powerline/bindings/tmux/powerline.conf
-#[1]=${HOME}/lib/python3.6/site-packages/powerline/bindings/tmux/powerline.conf
-#)
-#zsh不支持这种方式定义数组
-
-#echo ${#powerline_conf[@]};
-for conf in ${powerline_conf[@]}; do
-	if [ -e $conf ];then
-		export POWERLINE_CONF_PATH=$conf
-		break
-	fi
-done
-# open-terminal
-#[[ -z "$TMUX" && -n "$USE_TMUX" ]] && {
-    #[[ -n "$ATTACH_ONLY" ]] && { tmux a 2>/dev/null || { cd && exec tmux }
-		#exit
-	#}
-	#tmux new-window -c "$PWD" 2>/dev/null && exec tmux a 
-	#exec tmux
-#}
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#alias -s php=vim
-#alias -s c=vim
-#alias -s h=vim
-#alias -s sh=vim
-#alias -s cpp=vim
-#alias -s html=vim
-alias vimrc="vim ~/.vimrc"
-alias ww="echo `whoami`@`hostname`\(`hostname -i`\):`pwd`"
 alias now="date +%F' '%T"
 
-cd_ll()
+function cd_ll()
 {
-	# 使用‘\’可以调用原始命令
+	# 使用\可以调用原始命令
 	\cd $1
 	# ls -l
 	clear
@@ -145,6 +83,11 @@ cd_ll()
 }
 # 设置别名
 alias cd='cd_ll'
+
+function tvim()
+{
+    tmux new-window 'vim $PWD/$1'
+}
 
 if [ -f "$HOME/.myalias.sh" ];then
 	source $HOME/.myalias.sh
@@ -181,20 +124,9 @@ function cg()
 	g++ $1 -o ${1%.*} -std=c++11
 }
 
-
-#function cd_ll()
-#{
-  # 使用‘\’可以调用原始命令
-#  \cd $1
-  # ls -l
-#  ll
-#}
-# 设置别名
-#alias cd='cd_ll'
-
 #用于显示gui窗口
 #export DISPLAY=127.0.0.1:0.0
-`cat /etc/resolv.conf | grep nameserver | awk '{print "export DISPLAY="$2":0"}'`
+`cat /etc/resolv.conf | grep nameserver | awk '{print "export DISPLAY="$2":0.0"}'`
 export LANG=zh_CN.UTF-8
 export LANGUAGE=zh_CN.UTF-8
 export LC_ALL=zh_CN.UTF-8
@@ -202,8 +134,3 @@ export LC_ALL=zh_CN.UTF-8
 umask 022
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-#if [ $(ps -ax | grep dbus-daemon | wc -l) -eq 1 ]; then
-  #eval `dbus-launch fcitx > /dev/null 2>&1`
-#fi
-#PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
